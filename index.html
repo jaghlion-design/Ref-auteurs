@@ -1,0 +1,3058 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Référentiel Clinique en Psychomotricité</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-active {
+            color: #0f766e;
+            border-bottom: 2px solid #0f766e;
+        }
+        .tab-inactive {
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-inactive:hover {
+            color: #0f766e;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-teal-700 text-white shadow-md py-6 px-6 md:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold tracking-wide">Référentiel Clinique en Psychomotricité</h1>
+                <p class="text-teal-100 text-sm mt-1">Base de données théorique, auteurs de référence et lexique conceptuel</p>
+            </div>
+            <div class="text-xs bg-teal-800/70 px-3 py-1.5 rounded-full text-teal-50 border border-teal-600">
+                <span id="stats-badge">55 fiches auteurs • 229 concepts indexés</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation par Onglets -->
+    <nav class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-20">
+        <div class="max-w-6xl mx-auto flex space-x-6 md:space-x-10 px-6 md:px-8 overflow-x-auto">
+            <button onclick="switchTab('tab-definition')" id="btn-definition" class="py-4 font-semibold whitespace-nowrap transition tab-active">
+                1. Qu'est-ce que la psychomotricité ?
+            </button>
+            <button onclick="switchTab('tab-vocab')" id="btn-vocab" class="py-4 font-semibold whitespace-nowrap transition tab-inactive">
+                2. Vocabulaire & Concepts (<span id="count-vocab-tab"></span>)
+            </button>
+            <button onclick="switchTab('tab-theories')" id="btn-theories" class="py-4 font-semibold whitespace-nowrap transition tab-inactive">
+                3. Théories & Auteurs (<span id="count-theories-tab"></span>)
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="max-w-6xl mx-auto p-6 md:p-8 flex-grow w-full">
+
+        <!-- ONGLET 1 : DÉFINITION DE LA PSYCHOMOTRICITÉ -->
+        <section id="tab-definition" class="space-y-6">
+            <div class="border-b border-slate-200 pb-3">
+                <h2 class="text-2xl font-bold text-slate-900">Qu'est-ce que la psychomotricité ?</h2>
+                <p class="text-sm text-slate-500 mt-1">Fondements conceptuels issus de la base de référence</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <h3 class="text-lg font-bold text-teal-700">Définition générale</h3>
+                <p class="text-slate-700 leading-relaxed">
+                    La <strong>psychomotricité</strong> est une discipline clinique, éducative et thérapeutique qui étudie et accompagne les interactions constantes et réciproques entre les processus psychiques (émotions, affectivité, représentations, cognition) et les manifestations corporelles et motrices (tonus, posture, mouvement, expressivité gestuelle et relationnelle) d'un sujet en lien avec son environnement.
+                </p>
+                <blockquote class="italic text-slate-700 bg-teal-50/60 border-l-4 border-teal-600 p-4 rounded-r-lg text-sm leading-relaxed">
+                    « Notion introduite pour souligner les liens étroits entre le fonctionnement moteur, le tonus et la vie psychique, envisageant ensemble le corps, l'émotion, la cognition et la relation. »
+                </blockquote>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-teal-600">Fondement historique</span>
+                        <h4 class="font-bold text-slate-900 text-lg mt-1">Emile Dupré</h4>
+                        <p class="text-xs text-slate-500 mb-3">Neurologue et psychiatre</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Co-élaboration du concept de <strong>psychomotricité</strong> mettant en évidence les liens étroits entre le fonctionnement moteur, le tonus et la vie psychique (paratonie, syncinésies, débilité motrice).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-teal-600">Approche globale</span>
+                        <h4 class="font-bold text-slate-900 text-lg mt-1">Françoise Giromini</h4>
+                        <p class="text-xs text-slate-500 mb-3">Psychomotricienne, enseignante et auteure</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            <strong>Approche globale psychomotrice :</strong> lecture et accompagnement de la personne envisageant ensemble le corps, l'émotion, la cognition et la relation, dans une interaction constante entre corps et psyché.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-teal-600">Clinique & Organisation</span>
+                        <h4 class="font-bold text-slate-900 text-lg mt-1">Julian de Ajuriaguerra</h4>
+                        <p class="text-xs text-slate-500 mb-3">Neurologue et psychiatre</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            <strong>Organisation psychomotrice :</strong> agencement dynamique du tonus, de la posture, du geste, de l'espace et du temps en lien avec la vie psychique et le dialogue tonique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ONGLET 2 : VOCABULAIRE & CONCEPTS -->
+        <section id="tab-vocab" class="space-y-6 hidden">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Vocabulaire & Concepts de la Psychomotricité</h2>
+                    <p class="text-sm text-slate-500 mt-1">Tous les termes et définitions extraits de ton tableau Excel</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <input type="text" id="searchVocab" placeholder="Rechercher un terme, une définition, un auteur..." onkeyup="renderVocab()" class="px-4 py-2 bg-white border border-slate-300 rounded-lg w-full md:w-80 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600">
+                    <select id="filterVocabAuthor" onchange="renderVocab()" class="px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-600">
+                        <option value="">Tous les auteurs</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-500" id="vocab-results-info"></div>
+
+            <div id="vocabList" class="grid md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- ONGLET 3 : THÉORIES & AUTEURS -->
+        <section id="tab-theories" class="space-y-6 hidden">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Base de Données Théorique & Auteurs</h2>
+                    <p class="text-sm text-slate-500 mt-1">Recherche par auteur, profession, concept clé ou référence bibliographique</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <input type="text" id="searchTheory" placeholder="Rechercher un auteur, une théorie, un concept..." onkeyup="renderTheories()" class="px-4 py-2 bg-white border border-slate-300 rounded-lg w-full md:w-80 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600">
+                    <select id="filterTheoryAuthor" onchange="renderTheories()" class="px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-600">
+                        <option value="">Tous les auteurs (55 fiches)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-500" id="theory-results-info"></div>
+
+            <div id="theoryList" class="space-y-5"></div>
+        </section>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500 mt-auto">
+        <p>Référentiel personnel de psychomotricité • Généré exclusivement à partir de <em>Auteurs réf.xlsx</em></p>
+    </footer>
+
+    <!-- Données JSON et logique interactive -->
+    <script>
+        const THEORIES_DATA = [
+  {
+    "id": 1,
+    "auteur": "Albert Coeman",
+    "profession": "Kinésithérapeute, psychomotricien / thérapeute en psychomotricité et formateur",
+    "termes_cles": "Appuis, soutiens, poussées, axe corporel, engagement corporel, structuration psychomotrice, spatialité du jeune enfant",
+    "concepts": [
+      {
+        "terme": "Appuis, soutiens, poussées",
+        "definition": "mécanismes tonico-posturaux fondamentaux qui permettent à l'enfant de s'ancrer dans l'espace, de se redresser et d'organiser ses mouvements."
+      },
+      {
+        "terme": "Axe corporel",
+        "definition": "ligne de référence centrale du corps assurant l'équilibre, la stabilité et l'orientation spatiale."
+      },
+      {
+        "terme": "Engagement corporel",
+        "definition": "implication active et globale du corps de l'enfant (et du thérapeute) dans l'action et la relation."
+      },
+      {
+        "terme": "Structuration psychomotrice & spatialité du jeune enfant",
+        "definition": "construction progressive du rapport au corps, à l'espace et aux repères moteurs au fil du développement."
+      }
+    ],
+    "references": [
+      "Coeman, A., & Raulier, M. (2004). De la naissance à la marche : les étapes du développement psychomoteur de l'enfant. Étoile d'Herbe."
+    ]
+  },
+  {
+    "id": 2,
+    "auteur": "Marie Raulier",
+    "profession": "Psychomotricienne, puéricultrice et formatrice",
+    "termes_cles": "Étapes du développement psychomoteur (0–3 ans), appuis et soutiens, engagement corporel dans le cadre quotidien",
+    "concepts": [
+      {
+        "terme": "Étapes du développement psychomoteur (0–3 ans)",
+        "definition": "évolution progressive des compétences posturales, motrices, sensorielles et relationnelles du tout-petit."
+      },
+      {
+        "terme": "Appuis et soutiens",
+        "definition": "bases corporelles et relationnelles indispensables pour sécuriser la posture et favoriser la mobilité autonome."
+      },
+      {
+        "terme": "Engagement corporel dans le cadre quotidien",
+        "definition": "mobilisation du corps dans les routines, les soins et les jeux ordinaires pour soutenir la construction psychomotrice."
+      }
+    ],
+    "references": [
+      "Coeman, A., & Raulier, M. (2004). De la naissance à la marche : les étapes du développement psychomoteur de l'enfant. Étoile d'Herbe.",
+      "Raulier, M. (2012). Accompagner l'enfant dans son développement psychomoteur."
+    ]
+  },
+  {
+    "id": 3,
+    "auteur": "Allan Schore",
+    "profession": "Psychologue, chercheur en neurobiologie du développement et professeur (UCLA)",
+    "termes_cles": "Régulation affective dyadique, neurobiologie interpersonnelle, cerveau droit émotionnel, attachement et maturation du cortex orbitofrontal",
+    "concepts": [
+      {
+        "terme": "Régulation affective dyadique",
+        "definition": "co-régulation des états émotionnels entre le nourrisson et son donneur de soins via des échanges interactifs et communicatifs."
+      },
+      {
+        "terme": "Neurobiologie interpersonnelle",
+        "definition": "approche reliant les interactions relationnelles précoces à la maturation et au fonctionnement des circuits cérébraux."
+      },
+      {
+        "terme": "Cerveau droit émotionnel",
+        "definition": "hémisphère cérébral dominant dans les premières années pour le traitement implicite des émotions, du stress et de la communication non verbale."
+      },
+      {
+        "terme": "Attachement et maturation du cortex orbitofrontal",
+        "definition": "influence des liens d'attachement précoces sur le développement des zones frontales impliquées dans la régulation émotionnelle et comportementale."
+      }
+    ],
+    "references": [
+      "Schore, A. N. (1994). Affect Regulation and the Origin of the Self. Lawrence Erlbaum.",
+      "Schore, A. N. (2003). Affect Dysregulation and Disorders of the Self. W. W. Norton.",
+      "Schore, A. N. (2008). La régulation affective et la réparation du soi. Éditions du CIG."
+    ]
+  },
+  {
+    "id": 4,
+    "auteur": "André Bullinger",
+    "profession": "Psychologue du développement et professeur émérite (Université de Genève)",
+    "termes_cles": "Instrument corporel, milieu / environnement, flux sensoriels, organisme, équilibration tonico-posturale, enveloppe corporelle, espace sensori-moteur",
+    "concepts": [
+      {
+        "terme": "Instrument corporel",
+        "definition": "ensemble des moyens sensori-moteurs et tonico-posturaux dont dispose l'organisme pour agir sur le milieu et se construire."
+      },
+      {
+        "terme": "Milieu / environnement",
+        "definition": "ensemble des sollicitations physiques, sensorielles, matérielles et humaines avec lesquelles l'organisme interagit."
+      },
+      {
+        "terme": "Flux sensoriels",
+        "definition": "courants d'informations sensorielles (visuels, auditifs, tactiles, vestibulaires, proprioceptifs) provenant de l'intérieur ou de l'extérieur du corps."
+      },
+      {
+        "terme": "Organisme",
+        "definition": "totalité biologique soumise aux lois physiques et physiologiques, en interaction constante avec son milieu."
+      },
+      {
+        "terme": "Équilibration tonico-posturale",
+        "definition": "ajustement continu des tensions musculaires et de la posture face à la gravité et aux flux sensoriels."
+      },
+      {
+        "terme": "Enveloppe corporelle",
+        "definition": "frontière sensorielle et tonique permettant de délimiter le dedans et le dehors et d'unifier les perceptions."
+      },
+      {
+        "terme": "Espace sensori-moteur",
+        "definition": "espace structuré par l'articulation entre les perceptions sensorielles, les postures et les actions motrices."
+      }
+    ],
+    "references": [
+      "Bullinger, A. (2004). Le développement sensori-moteur de l'enfant et ses avatars (Tome 1). Érès.",
+      "Bullinger, A. (2015). Le développement sensori-moteur de l'enfant et ses avatars (Tome 2). Érès."
+    ]
+  },
+  {
+    "id": 5,
+    "auteur": "André Lapierre",
+    "profession": "Kinésithérapeute, psychopédagogue et théoricien de la psychomotricité",
+    "termes_cles": "Psychomotricité relationnelle, vécu corporel, tonus relationnel / dialogue tonique, symbolisation motrice, éducation psychomotrice",
+    "concepts": [
+      {
+        "terme": "Psychomotricité relationnelle",
+        "definition": "approche thérapeutique et éducative centrée sur le vécu corporel, l'expression émotionnelle et la relation à l'autre."
+      },
+      {
+        "terme": "Vécu corporel",
+        "definition": "expérience subjective et globale du corps ressentie à travers les sensations, les émotions et le mouvement."
+      },
+      {
+        "terme": "Tonus relationnel / dialogue tonique",
+        "definition": "échanges de tensions musculaires et d'ajustements posturaux porteurs de sens émotionnel et relationnel."
+      },
+      {
+        "terme": "Symbolisation motrice",
+        "definition": "passage d'une décharge ou d'un geste moteur brut à une représentation symbolique via le jeu et l'expression corporelle."
+      },
+      {
+        "terme": "Éducation psychomotrice",
+        "definition": "démarche visant l'épanouissement global de la personne à travers l'expérience corporelle et motrice."
+      }
+    ],
+    "references": [
+      "Lapierre, A., & Aucouturier, B. (1975). La symbolique du mouvement. Épi.",
+      "Lapierre, A., & Aucouturier, B. (1982). Le corps et l'inconscient dans l'éducation et la thérapie. Doin.",
+      "Lapierre, A., & Lapierre, A. (1997). La psychomotricité relationnelle."
+    ]
+  },
+  {
+    "id": 6,
+    "auteur": "Anne Van Den Brill",
+    "profession": "Psychomotricienne et coordinatrice / enseignante en formation en psychomotricité",
+    "termes_cles": "Formation corporelle, cadre et médiation psychomotrice, accompagnement clinique",
+    "concepts": [
+      {
+        "terme": "Formation corporelle",
+        "definition": "travail expérientiel sur son propre corps, son tonus, sa posture et son engagement afin de développer une posture professionnelle clinique."
+      },
+      {
+        "terme": "Cadre et médiation psychomotrice",
+        "definition": "organisation sécurisante du temps, de l'espace, des règles et des objets/activités pour soutenir le processus thérapeutique."
+      },
+      {
+        "terme": "Accompagnement clinique",
+        "definition": "présence étayante et ajustée auprès d'une personne ou d'un groupe en respectant son rythme et son histoire."
+      }
+    ],
+    "references": [
+      "Publications et communications cliniques en formation en psychomotricité (Belgique francophone / HEPN – répertoire professionnel)."
+    ]
+  },
+  {
+    "id": 7,
+    "auteur": "Baruch Spinoza",
+    "profession": "Philosophe rationaliste",
+    "termes_cles": "Conatus, affects (affectus : joie, tristesse, désir), parallélisme / unité corps-esprit (attributs de la substance)",
+    "concepts": [
+      {
+        "terme": "Conatus",
+        "definition": "effort ou tendance essentielle de tout être à persévérer dans son être et à accroître sa puissance d'agir et de penser."
+      },
+      {
+        "terme": "Affects (affectus",
+        "definition": "joie, tristesse, désir) : modifications du corps et de l'esprit qui augmentent (joie) ou diminuent (tristesse) la puissance d'agir, articulées autour du désir."
+      },
+      {
+        "terme": "Parallélisme / unité corps-esprit (attributs de la substance)",
+        "definition": "conception selon laquelle le corps et l'esprit ne sont pas deux substances séparées, mais l'expression sous deux attributs différents d'une même réalité."
+      }
+    ],
+    "references": [
+      "Spinoza, B. (1677). Éthique (Parties II et III)."
+    ]
+  },
+  {
+    "id": 8,
+    "auteur": "Baruch Spinoza",
+    "profession": "Philosophe rationaliste",
+    "termes_cles": "Raison, adéquation des idées, puissance d'agir, béatitude / liberté",
+    "concepts": [
+      {
+        "terme": "Raison",
+        "definition": "mode de connaissance permettant de comprendre les causes et les liens nécessaires des choses plutôt que de subir des idées confuses."
+      },
+      {
+        "terme": "Adéquation des idées",
+        "definition": "justesse d'une idée claire et distincte qui exprime l'essence d'une chose et favorise l'autonomie psychique."
+      },
+      {
+        "terme": "Puissance d'agir",
+        "definition": "capacité effective d'un individu à agir, à comprendre et à transformer ses affects de manière active."
+      },
+      {
+        "terme": "Béatitude / liberté",
+        "definition": "état d'apaisement et d'autonomie intérieure atteint par la compréhension rationnelle et l'amour intellectuel de la nature/de Dieu."
+      }
+    ],
+    "references": [
+      "Spinoza, B. (1677). Éthique (Parties IV et V).",
+      "Spinoza, B. (1661/1677). Traité de la réforme de l'entendement."
+    ]
+  },
+  {
+    "id": 9,
+    "auteur": "Benoît Lesage",
+    "profession": "Médecin, docteur en sciences humaines, danseur, formateur en danse-thérapie et enseignant en psychomotricité",
+    "termes_cles": "Anatomie psychomotrice, corporéité, étayage corporel, cohérence posturale, expressivité du geste, instauration du corps",
+    "concepts": [
+      {
+        "terme": "Anatomie psychomotrice",
+        "definition": "lecture du corps unissant repères anatomiques, physiologiques et significations psychiques et relationnelles."
+      },
+      {
+        "terme": "Corporéité",
+        "definition": "manière singulière dont un sujet habite, ressent et exprime son corps dans le monde et dans la relation."
+      },
+      {
+        "terme": "Étayage corporel",
+        "definition": "soutien postural, tonique et relationnel qui aide le sujet à se structurer et à se sentir contenu."
+      },
+      {
+        "terme": "Cohérence posturale",
+        "definition": "harmonie dynamique entre l'alignement corporel, l'équilibre tonique et l'intention d'action ou de relation."
+      },
+      {
+        "terme": "Expressivité du geste",
+        "definition": "valeur communicative, émotionnelle et symbolique portée par le mouvement au-delà de sa seule efficacité mécanique."
+      },
+      {
+        "terme": "Instauration du corps",
+        "definition": "processus continu par lequel le corps se construit et s'approprie comme lieu d'existence et d'identité."
+      }
+    ],
+    "references": [
+      "Lesage, B. (2006). La danse dans le processus thérapeutique. Érès.",
+      "Lesage, B. (2012). Jalons pour une pratique psychocorporelle : structure, étayage, mouvement et relation. Érès."
+    ]
+  },
+  {
+    "id": 10,
+    "auteur": "Bernard Aucouturier",
+    "profession": "Psychomotricien et psychologue",
+    "termes_cles": "Pratique psychomotrice aucouturière (PPA), expressivité motrice, fantasme d'action, plaisir sensori-moteur, paravent / enveloppe, décentration, processus de symbolisation",
+    "concepts": [
+      {
+        "terme": "Pratique psychomotrice aucouturière (PPA)",
+        "definition": "approche éducative et thérapeutique fondée sur le jeu spontané, l'expressivité motrice et l'accompagnement psychomoteur."
+      },
+      {
+        "terme": "Expressivité motrice",
+        "definition": "manière dont l'enfant manifeste ses émotions, son histoire et son monde interne par le mouvement, la posture et le jeu."
+      },
+      {
+        "terme": "Fantasme d'action",
+        "definition": "représentation inconsciente associée au mouvement et au jeu (ex. : détruire/construire, être avalé/recraché, se cacher/apparaître)."
+      },
+      {
+        "terme": "Plaisir sensori-moteur",
+        "definition": "éprouvé jubilatoire lié aux sensations corporelles, au mouvement, à l'équilibre, au déséquilibre et aux jeux d'enveloppe."
+      },
+      {
+        "terme": "Paravent / enveloppe",
+        "definition": "espace ou dispositif (matériel, corporel ou symbolique) qui protège, délimite et transforme les sollicitations pour favoriser la sécurité."
+      },
+      {
+        "terme": "Décentration",
+        "definition": "capacité progressive à prendre de la distance par rapport à l'action brute et à l'émotion immédiate pour accéder à la représentation."
+      },
+      {
+        "terme": "Processus de symbolisation",
+        "definition": "transformation progressive des éprouvés corporels et émotionnels en représentations mentales, jeux symboliques et langage."
+      }
+    ],
+    "references": [
+      "Aucouturier, B. (2005). Les fantasmes d'action et la pratique psychomotrice. De Boeck.",
+      "Aucouturier, B., Darrault, I., & Empinet, J.-L. (1984). La pratique psychomotrice : rééducation et thérapie. Doin."
+    ]
+  },
+  {
+    "id": 11,
+    "auteur": "Bernard Golse",
+    "profession": "Pédopsychiatre, psychanalyste et professeur émérite de psychiatrie de l'enfant et de l'adolescent",
+    "termes_cles": "Intercorporéité, intersubjectivité, corps propre / corps érogène / corps imaginaire / corps symbolique, filiation et affiliation, bisexualité psychique",
+    "concepts": [
+      {
+        "terme": "Intercorporéité",
+        "definition": "rencontre et résonance réciproque des corps et des éprouvés sensori-moteurs dans la relation intersubjective."
+      },
+      {
+        "terme": "Intersubjectivité",
+        "definition": "partage d'états mentaux, d'intentions et d'émotions entre deux sujets (notamment entre le bébé et l'adulte)."
+      },
+      {
+        "terme": "Corps propre / corps érogène / corps imaginaire / corps symbolique",
+        "definition": "différentes dimensions du corps chez l'humain, articulant l'expérience vécue, le plaisir/les pulsions, les représentations fantasmatiques et l'inscription dans le langage/la culture."
+      },
+      {
+        "terme": "Filiation et affiliation",
+        "definition": "inscription généalogique (liens de parenté et d'origine) et élargissement des liens sociaux et culturels au fil du développement."
+      },
+      {
+        "terme": "Bisexualité psychique",
+        "definition": "articulation interne des positions identificatoires et relationnelles masculines et féminines chez tout sujet."
+      }
+    ],
+    "references": [
+      "Golse, B. (2006). L'être-bébé. PUF.",
+      "Golse, B., & Roussillon, R. (2010). La naissance de l'objet. PUF."
+    ]
+  },
+  {
+    "id": 12,
+    "auteur": "Boris Cyrulnik",
+    "profession": "Neuropsychiatre, psychanalyste et éthologue",
+    "termes_cles": "Résilience, tuteur de résilience, attachement, niche sensorielle et affective, récit / narration",
+    "concepts": [
+      {
+        "terme": "Résilience",
+        "definition": "capacité d'un individu ou d'un groupe à se reconstruire et à reprendre un développement après un traumatisme ou une adversité grave."
+      },
+      {
+        "terme": "Tuteur de résilience",
+        "definition": "personne, lieu, activité ou repère culturel qui offre un soutien affectif et symbolique permettant de surmonter l'épreuve."
+      },
+      {
+        "terme": "Attachement",
+        "definition": "lien affectif profond et durable qui sécurise l'enfant et soutient sa confiance dans la relation."
+      },
+      {
+        "terme": "Niche sensorielle et affective",
+        "definition": "environnement premier fait de sensations, d'odeurs, de voix, de contacts et d'attentions qui façonne les premiers repères."
+      },
+      {
+        "terme": "Récit / narration",
+        "definition": "mise en mots ou en histoire de l'expérience vécue permettant de donner du sens à ce qui a été subi."
+      }
+    ],
+    "references": [
+      "Cyrulnik, B. (1999). Un merveilleux malheur. Odile Jacob.",
+      "Cyrulnik, B. (2001). Les vilains petits canards. Odile Jacob."
+    ]
+  },
+  {
+    "id": 13,
+    "auteur": "Carl Rogers",
+    "profession": "Psychologue humaniste et psychothérapeute",
+    "termes_cles": "Approche centrée sur la personne (ACP), congruence / authenticité, considération positive inconditionnelle, écoute empathique, tendance à l'actualisation",
+    "concepts": [
+      {
+        "terme": "Approche centrée sur la personne (ACP)",
+        "definition": "méthode thérapeutique et relationnelle plaçant la personne, son expérience et son autonomie au cœur de l'accompagnement."
+      },
+      {
+        "terme": "Congruence / authenticité",
+        "definition": "accord juste entre ce que le thérapeute ressent intérieurement, ce qu'il vit et ce qu'il exprime dans la relation."
+      },
+      {
+        "terme": "Considération positive inconditionnelle",
+        "definition": "accueil chaleureux et non jugeant de la personne, indépendamment de ses comportements ou de ses réussites."
+      },
+      {
+        "terme": "Écoute empathique",
+        "definition": "capacité à comprendre le cadre de référence interne de l'autre avec sensibilité, comme si l'on était l'autre sans perdre sa propre identité."
+      },
+      {
+        "terme": "Tendance à l'actualisation",
+        "definition": "impulsion naturelle de l'organisme à se développer, se différencier et réaliser son potentiel."
+      }
+    ],
+    "references": [
+      "Rogers, C. R. (1951). Client-Centered Therapy. Houghton Mifflin.",
+      "Rogers, C. R. (1961). Le développement de la personne. Dunod."
+    ]
+  },
+  {
+    "id": 14,
+    "auteur": "Carol & Byron Norton",
+    "profession": "Psychothérapeutes / psychologues spécialisés en thérapie par le jeu (Play Therapy)",
+    "termes_cles": "Experiential Play Therapy (EPT), jeu métaphorique, régulation du système nerveux dans le jeu, réparation du lien d'attachement",
+    "concepts": [
+      {
+        "terme": "Experiential Play Therapy (EPT)",
+        "definition": "approche de thérapie par le jeu centrée sur l'expérience émotionnelle directe et la relation thérapeutique plutôt que sur la seule interprétation verbale."
+      },
+      {
+        "terme": "Jeu métaphorique",
+        "definition": "utilisation symbolique des jouets, scénarios et mises en scène pour exprimer et transformer des conflits ou traumatismes."
+      },
+      {
+        "terme": "Régulation du système nerveux dans le jeu",
+        "definition": "apaisement et rééquilibrage des réactions d'alerte ou de sidération grâce à des expériences ludiques sécurisantes."
+      },
+      {
+        "terme": "Réparation du lien d'attachement",
+        "definition": "restauration d'un lien de confiance et de sécurité émotionnelle à travers la relation thérapeutique."
+      }
+    ],
+    "references": [
+      "Norton, C. C., & Norton, B. E. (1997). Reaching Children Through Play Therapy: An Experiential Approach. White Apple Press."
+    ]
+  },
+  {
+    "id": 15,
+    "auteur": "Catherine Potel",
+    "profession": "Psychomotricienne, psychothérapeute et docteure en psychopathologie",
+    "termes_cles": "Corps souffrant / corps contenant, enveloppes psychocorporelles, symbolisation par le corps, clinique du lien",
+    "concepts": [
+      {
+        "terme": "Corps souffrant / corps contenant",
+        "definition": "double dimension du corps pouvant être le lieu d'une douleur/d'un symptôme tout en servant d'enveloppe et de soutien psychique."
+      },
+      {
+        "terme": "Enveloppes psychocorporelles",
+        "definition": "frontières et contenants corporels et psychiques qui délimitent le sujet et régulent les échanges avec l'extérieur."
+      },
+      {
+        "terme": "Symbolisation par le corps",
+        "definition": "élaboration et mise en forme des éprouvés archaïques ou traumatiques à travers le mouvement, le tonus et la médiation corporelle."
+      },
+      {
+        "terme": "Clinique du lien",
+        "definition": "approche thérapeutique attentive à la qualité, aux ruptures et à la restauration des liens relationnels et corporels."
+      }
+    ],
+    "references": [
+      "Potel, C. (2010). Être psychomotricien : un métier du présent, un métier d'avenir. Érès.",
+      "Potel, C. (2015). Le corps et l'eau : une médiation en psychomotricité. Érès."
+    ]
+  },
+  {
+    "id": 16,
+    "auteur": "Christian Ballouard",
+    "profession": "Psychomotricien et auteur",
+    "termes_cles": "Cadre thérapeutique contenant, médiations corporelles, transfert primaire et secondaire, troubles psychomoteurs (inhibition, instabilité, dyspraxie)",
+    "concepts": [
+      {
+        "terme": "Cadre thérapeutique contenant",
+        "definition": "ensemble des repères stables (temps, espace, règles, attitude du psychomotricien) qui sécurise et rend possible le travail psychique."
+      },
+      {
+        "terme": "Médiations corporelles",
+        "definition": "supports et activités corporels utilisés comme tiers facilitant l'expression, la relation et la symbolisation."
+      },
+      {
+        "terme": "Transfert primaire et secondaire",
+        "definition": "réactualisation dans la relation thérapeutique de modes relationnels précoces/archaïques (primaire) ou de liens/conflits plus élaborés (secondaire)."
+      },
+      {
+        "terme": "Troubles psychomoteurs (inhibition, instabilité, dyspraxie)",
+        "definition": "manifestations cliniques touchant l'organisation tonico-posturale, l'action et la régulation motrice (repli/retenue, agitation/dispersion, difficultés de coordination/planification gestuelle)."
+      }
+    ],
+    "references": [
+      "Ballouard, C. (2003). Le travail du psychomotricien. Dunod.",
+      "Ballouard, C. (2008). L'aide-mémoire de psychomotricité. Dunod."
+    ]
+  },
+  {
+    "id": 17,
+    "auteur": "Daniel Courberand",
+    "profession": "Psychomotricien et psychothérapeute",
+    "termes_cles": "Corps comme lieu de l'aventure psychique, enveloppes corporelles, groupes thérapeutiques en psychomotricité, clinique de l'enfant sans langage",
+    "concepts": [
+      {
+        "terme": "Corps comme lieu de l'aventure psychique",
+        "definition": "conception du corps comme espace privilégié où s'éprouvent, se jouent et se transforment les mouvements psychiques."
+      },
+      {
+        "terme": "Enveloppes corporelles",
+        "definition": "limites sensori-motrices et psychiques permettant d'éprouver une unité et de contenir les angoisses."
+      },
+      {
+        "terme": "Groupes thérapeutiques en psychomotricité",
+        "definition": "dispositifs collectifs favorisant la socialisation, l'étayage par les pairs et l'expérimentation corporelle partagée."
+      },
+      {
+        "terme": "Clinique de l'enfant sans langage",
+        "definition": "approche adaptée aux enfants qui ne communiquent pas ou peu par la parole, s'appuyant sur le corps, le tonus et les médiations non verbales."
+      }
+    ],
+    "references": [
+      "Courberand, D. (2013). La psychomotricité, une aventure psychique. In Press.",
+      "Courberand, D. (2018). Clinique psychomotrice de l'enfant."
+    ]
+  },
+  {
+    "id": 18,
+    "auteur": "Daniel Stern",
+    "profession": "Psychiatre et psychanalyste",
+    "termes_cles": "Sens de soi (sense of self : émergent, nucléaire, subjectif, verbal, narratif), accordage affectif (affect attunement), enveloppe protonarrative, RIGs (représentations d'interactions généralisées)",
+    "concepts": [
+      {
+        "terme": "Sens de soi (sense of self",
+        "definition": "émergent, nucléaire, subjectif, verbal, narratif) : sentiment continu et évolutif d'exister et d'être un agent distinct, se complexifiant par strates au cours du développement."
+      },
+      {
+        "terme": "Accordage affectif (affect attunement)",
+        "definition": "comportement par lequel l'adulte reflète et partage la qualité émotionnelle/l'intensité d'un éprouvé du bébé sans simple imitation littérale."
+      },
+      {
+        "terme": "Enveloppe protonarrative",
+        "definition": "organisation temporelle et dynamique d'une expérience vécue (avec début, tension/point culminant, résolution) formant une matrice pré-verbale de récit."
+      },
+      {
+        "terme": "RIGs (représentations d'interactions généralisées)",
+        "definition": "schémas internes construits à partir de la répétition d'interactions vécues avec l'entourage, guidant les attentes relationnelles."
+      }
+    ],
+    "references": [
+      "Courberand, D. (2013). La psychomotricité, une aventure psychique. In Press.",
+      "Courberand, D. (2018). Clinique psychomotrice de l'enfant."
+    ]
+  },
+  {
+    "id": 19,
+    "auteur": "Didier Anzieu",
+    "profession": "Psychanalyste et professeur de psychologie clinique",
+    "termes_cles": "Moi-peau, enveloppe psychique, fonctions du Moi-peau (contenance, pare-excitation, individuation, intersensorialité, étayage, sexualisation, recharge libidinale, inscription des traces)",
+    "concepts": [
+      {
+        "terme": "Moi-peau",
+        "definition": "figuration psychique par laquelle le moi de l'enfant se représente lui-même comme un moi qui contient les contenus psychiques, à partir de l'expérience de la peau."
+      },
+      {
+        "terme": "Enveloppe psychique",
+        "definition": "structure pare-excitations et contenante qui délimite l'espace psychique interne et permet les échanges avec l'environnement."
+      },
+      {
+        "terme": "Fonctions du Moi-peau",
+        "definition": "ensemble des neuf fonctions analogues à celles de la peau (maintien/contenance, pare-excitation, individuation, intersensorialité, étayage sur la pulsion sexuelle, sexualisation/recharge libidinale, inscription des traces, plus l'aspect toxique si défaillant)."
+      }
+    ],
+    "references": [
+      "Anzieu, D. (1985). Le Moi-peau. Dunod.",
+      "Anzieu, D. et al. (1987). Les enveloppes psychiques. Dunod."
+    ]
+  },
+  {
+    "id": 20,
+    "auteur": "Donald W. Winnicott",
+    "profession": "Pédiatre et psychanalyste",
+    "termes_cles": "Objet transitionnel, espace / aire transitionnelle, holding, handling, object presenting, mère suffisamment bonne (good enough mother), true self / false self, squiggle",
+    "concepts": [
+      {
+        "terme": "Objet transitionnel",
+        "definition": "objet matériel (comme un doudou) choisi par le bébé qui aide à passer de la relation fusionnelle/primaire à l'environnement extérieur et apaise l'angoisse de séparation."
+      },
+      {
+        "terme": "Espace / aire transitionnelle",
+        "definition": "zone intermédiaire d'expérience (lieu du jeu, de la créativité et de la culture) située entre la réalité interne subjective et la réalité extérieure partagée."
+      },
+      {
+        "terme": "Holding",
+        "definition": "manière dont l'environnement (et le thérapeute) porte, soutient physiquement et psychiquement le bébé et assure une continuité d'existence."
+      },
+      {
+        "terme": "Handling",
+        "definition": "manière dont le bébé est manipulé et soigné physiquement, favorisant l'intégration psychosomatique et le sentiment d'habiter son corps."
+      },
+      {
+        "terme": "Object presenting",
+        "definition": "présentation graduelle et adaptée de la réalité extérieure au bébé afin qu'il puisse la rencontrer sans être submergé."
+      },
+      {
+        "terme": "Mère suffisamment bonne (good enough mother)",
+        "definition": "mère qui répond d'abord très finement aux besoins du bébé puis se désadapte progressivement au rythme de sa maturation."
+      },
+      {
+        "terme": "True self / false self",
+        "definition": "organisation authentique et spontanée de la personnalité (true self) par opposition à une façade défensive et soumise aux attentes extérieures (false self)."
+      },
+      {
+        "terme": "Squiggle",
+        "definition": "jeu de gribouillage alterné entre le thérapeute et l'enfant permettant de faire émerger des pensées, émotions et fantasmes."
+      }
+    ],
+    "references": [
+      "Winnicott, D. W. (1958). De la pédiatrie à la psychanalyse. Payot.",
+      "Winnicott, D. W. (1971). Jeu et réalité : l'espace potentiel. Gallimard."
+    ]
+  },
+  {
+    "id": 21,
+    "auteur": "Emile Dupré",
+    "profession": "Neurologue et psychiatre",
+    "termes_cles": "Débilité motrice, paratonie, syncinésies, psychomotricité (co-élaboration du concept)",
+    "concepts": [
+      {
+        "terme": "Débilité motrice",
+        "definition": "ensemble de particularités motrices (maladresse, syncinésies, paratonie, hypertonie) observées chez certains sujets et associées à des fragilités neuropsychiques."
+      },
+      {
+        "terme": "Paratonie",
+        "definition": "difficulté à relâcher volontairement ses muscles, entraînant une résistance ou une raideur lors de la mobilisation passive."
+      },
+      {
+        "terme": "Syncinésies",
+        "definition": "mouvements involontaires et parasites qui apparaissent dans une partie du corps lors de l'exécution d'un mouvement volontaire dans une autre partie."
+      },
+      {
+        "terme": "Psychomotricité (co-élaboration du concept)",
+        "definition": "notion introduite pour souligner les liens étroits entre le fonctionnement moteur, le tonus et la vie psychique."
+      }
+    ],
+    "references": [
+      "Dupré, E. (1907). La débilité motrice dans ses rapports avec la débilité mentale et l'insuffisance pyramidale.",
+      "Dupré, E. (1925). Pathologie de l'imagination et de l'émotivité. Payot."
+    ]
+  },
+  {
+    "id": 22,
+    "auteur": "Emmi Pikler",
+    "profession": "Pédiatre",
+    "termes_cles": "Motricité libre, activité autonome, soin relationnel / soins attentifs, sécurité affective, posture / gestuelle respectueuse",
+    "concepts": [
+      {
+        "terme": "Motricité libre",
+        "definition": "développement moteur spontané où l'enfant découvre et maîtrise seul les postures et déplacements, sans être mis ni maintenu artificiellement dans des positions qu'il n'a pas acquises par lui-même."
+      },
+      {
+        "terme": "Activité autonome",
+        "definition": "initiative propre de l'enfant qui choisit et explore ses jeux et mouvements à son rythme dans un environnement adapté."
+      },
+      {
+        "terme": "Soin relationnel / soins attentifs",
+        "definition": "moments de soins (change, repas, habillage) vécus comme des temps de rencontre, d'échange et de coopération plutôt que de simple exécution technique."
+      },
+      {
+        "terme": "Sécurité affective",
+        "definition": "sentiment de stabilité et de confiance issu d'une relation prévisible, respectueuse et disponible avec l'adulte."
+      },
+      {
+        "terme": "Posture / gestuelle respectueuse",
+        "definition": "attitude calme, lente et attentive de l'adulte qui laisse l'enfant participer activement et préserve sa dignité."
+      }
+    ],
+    "references": [
+      "Pikler, E. (1969/1979). Se mouvoir en liberté dès le premier âge. PUF.",
+      "David, M., & Appell, G. (1973). Lóczy ou le maternage insolite. Érès."
+    ]
+  },
+  {
+    "id": 23,
+    "auteur": "Françoise Désobeau",
+    "profession": "Orthophoniste, psychomotricienne et thérapeute psychocorporelle",
+    "termes_cles": "Thérapie psychomotrice à médiation corporelle, corps et langage, communication non verbale et gestuelle",
+    "concepts": [
+      {
+        "terme": "Thérapie psychomotrice à médiation corporelle",
+        "definition": "prise en charge utilisant le mouvement, le jeu et le corps comme vecteurs d'expression et de transformation psychique."
+      },
+      {
+        "terme": "Corps et langage",
+        "definition": "articulation et échanges dynamiques entre les manifestations corporelles/non verbales et la mise en mots ou la symbolisation."
+      },
+      {
+        "terme": "Communication non verbale et gestuelle",
+        "definition": "transmission de messages, d'émotions et d'intentions par la posture, le regard, la mimique et le geste."
+      }
+    ],
+    "references": [
+      "Desobeau, F. (2009). La thérapie psychomotrice : du corps vécu au corps parlé.",
+      "Contributions cliniques dans la revue Thérapie Psychomotrice et Recherches."
+    ]
+  },
+  {
+    "id": 24,
+    "auteur": "Françoise Dolto",
+    "profession": "Psychanalyste et pédiatre",
+    "termes_cles": "Image inconsciente du corps (IIC) vs schéma corporel, castration symboligène, complexe du homard, « tout est langage »",
+    "concepts": [
+      {
+        "terme": "Image inconsciente du corps (IIC) vs schéma corporel",
+        "definition": "l'IIC est la synthèse vivante et inconsciente de nos expériences émotionnelles et relationnelles (propre à chacun, liée au désir), tandis que le schéma corporel est la représentation neurologique/anatomique et perceptive commune à l'espèce."
+      },
+      {
+        "terme": "Castration symboligène",
+        "definition": "épreuve structurante et humanisante (orale, anale, génitale, etc.) qui invite l'enfant à renoncer à une satisfaction immédiate ou fusionnelle pour accéder à plus d'autonomie et de symbolisation."
+      },
+      {
+        "terme": "Complexe du homard",
+        "definition": "image illustrant le moment où l'enfant quitte une enveloppe/protection devenue trop étroite et se retrouve temporairement vulnérable avant de former une nouvelle organisation."
+      },
+      {
+        "terme": "« Tout est langage »",
+        "definition": "idée que tout comportement, symptôme, geste ou silence d'un sujet a une valeur expressive et relationnelle porteur de sens."
+      }
+    ],
+    "references": [
+      "Dolto, F. (1984). L'image inconsciente du corps. Seuil.",
+      "Dolto, F. (1981). Au jeu du désir. Seuil."
+    ]
+  },
+  {
+    "id": 25,
+    "auteur": "Françoise Giromini",
+    "profession": "Psychomotricienne, cadre de santé / enseignante et auteure en psychomotricité",
+    "termes_cles": "Approche globale psychomotrice, clinique et théorisation de la psychomotricité, corps et psyché",
+    "concepts": [
+      {
+        "terme": "Approche globale psychomotrice",
+        "definition": "lecture et accompagnement de la personne envisageant ensemble le corps, l'émotion, la cognition et la relation."
+      },
+      {
+        "terme": "Clinique et théorisation de la psychomotricité",
+        "definition": "élaboration des repères théoriques et méthodologiques guidant l'observation, l'évaluation et l'intervention psychomotrices."
+      },
+      {
+        "terme": "Corps et psyché",
+        "definition": "interaction constante et réciproque entre les processus corporels et les mouvements psychiques."
+      }
+    ],
+    "references": [
+      "Giromini, F., Albaret, J.-M., & Scialom, P. (2011/2015). Manuel d'enseignement de psychomotricité (Tomes 1 à 3). De Boeck Supérieur."
+    ]
+  },
+  {
+    "id": 26,
+    "auteur": "Geneviève Haag",
+    "profession": "Pédopsychiatre et psychanalyste",
+    "termes_cles": "Identification adhésive, enveloppe / carapace corporelle, filiation / structuration de l'image du corps, retour sur soi, équilibre / axe corporel",
+    "concepts": [
+      {
+        "terme": "Identification adhésive",
+        "definition": "mécanisme très précoce consistant à se coller ou s'adosser à une surface, une forme ou un objet pour maintenir un sentiment d'existence et éviter l'effondrement."
+      },
+      {
+        "terme": "Enveloppe / carapace corporelle",
+        "definition": "organisation défensive ou contenante du corps construite pour se protéger des angoisses d'anéantissement ou de morcellement."
+      },
+      {
+        "terme": "Filiation / structuration de l'image du corps",
+        "definition": "construction progressive du sentiment d'unité, d'axe et d'appartenance familiale et symbolique."
+      },
+      {
+        "terme": "Retour sur soi",
+        "definition": "mouvement d'intériorisation et de rassemblement des perceptions qui permet au sujet de se sentir unifié et présent à lui-même."
+      },
+      {
+        "terme": "Équilibre / axe corporel",
+        "definition": "verticalité et centralité corporelles associées au sentiment d'identité et de sécurité interne."
+      }
+    ],
+    "references": [
+      "Haag, G. (1985). « La mère et le bébé dans les deux moitiés du corps ». Neuropsychiatrie de l'Enfance et de l'Adolescence.",
+      "Haag, G. (2018). Le Moi corporel : autour de la clinique de l'autisme. PUF."
+    ]
+  },
+  {
+    "id": 27,
+    "auteur": "Gert Holstege",
+    "profession": "Neuroanatomiste et neuroscientifique",
+    "termes_cles": "Système moteur émotionnel (Emotional Motor System - EMS) vs système moteur somatique, substance grise périaqueducale (PAG), noyau rétroambigu (nucleus retroambiguus)",
+    "concepts": [
+      {
+        "terme": "Système moteur émotionnel (Emotional Motor System - EMS) vs système moteur somatique",
+        "definition": "l'EMS régule les postures, comportements et réponses physiologiques liées aux émotions et à la survie (défense, reproduction, vocalisation), distinct du système somatique orienté vers les mouvements volontaires et précis."
+      },
+      {
+        "terme": "Substance grise périaqueducale (PAG)",
+        "definition": "structure clé du tronc cérébral intégrant les signaux émotionnels et coordonnant des réponses motrices et autonomes adaptatives."
+      },
+      {
+        "terme": "Noyau rétroambigu (nucleus retroambiguus)",
+        "definition": "structure bulbaire recevant des projections de la PAG et relayant des commandes vers les motoneurones impliqués dans la respiration, la vocalisation et la posture."
+      }
+    ],
+    "references": [
+      "Holstege, G. (1992). « The emotional motor system ». European Journal of Morphology.",
+      "Holstege, G., Bandler, R., & Saper, C. B. (1996). The Emotional Motor System. Elsevier."
+    ]
+  },
+  {
+    "id": 28,
+    "auteur": "Giselle Soubiran",
+    "profession": "Médecin, neuropsychiatre et rééducatrice en psychomotricité",
+    "termes_cles": "Éducation psychomotrice, relaxation psychomotrice, schéma corporel, structuration spatio-temporelle",
+    "concepts": [
+      {
+        "terme": "Éducation psychomotrice",
+        "definition": "démarche éducative et préventive visant à harmoniser le développement moteur, perceptif, cognitif et affectif de l'enfant."
+      },
+      {
+        "terme": "Relaxation psychomotrice",
+        "definition": "technique de détente corporelle et de régulation tonique favorisant la conscience du corps et l'apaisement psychique."
+      },
+      {
+        "terme": "Schéma corporel",
+        "definition": "conscience et connaissance de son corps, de ses segments, de sa posture et de ses limites dans l'espace."
+      },
+      {
+        "terme": "Structuration spatio-temporelle",
+        "definition": "organisation progressive des repères d'espace (orientation, latéralité, distances) et de temps (rythme, succession, durée)."
+      }
+    ],
+    "references": [
+      "Soubiran, G. B., & Mazo, P. (1965). La réadaptation scolaire des enfants intelligents par la rééducation psychomotrice. Doin.",
+      "Soubiran, G. B., & Coste, J.-C. (1975). Psychomotricité et relaxation psychosomatique. Doin."
+    ]
+  },
+  {
+    "id": 29,
+    "auteur": "Henri Wallon",
+    "profession": "Psychologue, philosophe et homme politique",
+    "termes_cles": "Dialogue tonique, émotion comme fonction sociale et motrice, stades du développement psychomoteur, alternance fonctionnelle / prévalence motrice puis affective",
+    "concepts": [
+      {
+        "terme": "Dialogue tonique",
+        "definition": "échange premier, non verbal et émotionnel entre l'enfant et son entourage à travers les variations de tonus musculaire et d'attitude."
+      },
+      {
+        "terme": "Émotion comme fonction sociale et motrice",
+        "definition": "rôle fondamental de l'émotion qui relie l'organisme au milieu humain et s'exprime d'abord par des réactions toniques et posturales."
+      },
+      {
+        "terme": "Stades du développement psychomoteur",
+        "definition": "succession d'étapes marquées par des crises et des réorganisations entre le biologique, l'affectif, le moteur et le cognitif."
+      },
+      {
+        "terme": "Alternance fonctionnelle / prévalence motrice puis affective",
+        "definition": "succession dynamique dans le développement où prédominent tour à tour l'orientation vers l'action/le monde extérieur et l'orientation vers l'affectivité/l'intériorité."
+      }
+    ],
+    "references": [
+      "Wallon, H. (1925). L'enfant turbulent. Alcan.",
+      "Wallon, H. (1934). Les origines du caractère chez l'enfant. Boivin / PUF.",
+      "Wallon, H. (1941). L'évolution psychologique de l'enfant. Armand Colin."
+    ]
+  },
+  {
+    "id": 30,
+    "auteur": "Ivan Darrault",
+    "profession": "Sémioticien et chercheur en sémiotique",
+    "termes_cles": "Psychosémiotique, approche sémiotique de la thérapie psychomotrice, corps signifiant, narrativité corporelle",
+    "concepts": [
+      {
+        "terme": "Psychosémiotique",
+        "definition": "approche croisant la psychomotricité et la sémiotique pour analyser la production de sens dans les conduites corporelles et relationnelles."
+      },
+      {
+        "terme": "Approche sémiotique de la thérapie psychomotrice",
+        "definition": "lecture des gestes, postures, rythmes et interactions comme des systèmes de signes porteurs de significations."
+      },
+      {
+        "terme": "Corps signifiant",
+        "definition": "corps envisagé comme un espace d'expression et de signification où s'inscrivent des récits et des intentions."
+      },
+      {
+        "terme": "Narrativité corporelle",
+        "definition": "organisation dynamique et temporelle des actions et mouvements du sujet formant une trame expressive."
+      }
+    ],
+    "references": [
+      "Aucouturier, B., Darrault, I., & Empinet, J.-L. (1984). La pratique psychomotrice. Doin.",
+      "Darrault-Harris, I., & Klein, J.-P. (1993). Pour une psychiatrie de l'ellipse : les aventures du sujet en création. PUF."
+    ]
+  },
+  {
+    "id": 31,
+    "auteur": "Jacques Ellul",
+    "profession": "Sociologue, théologien et philosophe",
+    "termes_cles": "Technique / système technicien, autonomie de la technique, société de consommation / propagande",
+    "concepts": [
+      {
+        "terme": "Technique / système technicien",
+        "definition": "ensemble des moyens rationnellement et efficacement organisés dans chaque domaine d'activité, formant un système global interconnecté."
+      },
+      {
+        "terme": "Autonomie de la technique",
+        "definition": "tendance de la technique à évoluer selon sa propre logique et ses propres normes, échappant partiellement au contrôle moral ou politique."
+      },
+      {
+        "terme": "Société de consommation / propagande",
+        "definition": "organisation sociale marquée par la consommation de masse et l'usage systématique de la propagande pour orienter les opinions et comportements."
+      }
+    ],
+    "references": [
+      "Ellul, J. (1954). La Technique ou l'Enjeu du siècle. Armand Colin.",
+      "Ellul, J. (1962). Propagandes. Armand Colin.",
+      "Ellul, J. (1977). Le Système technicien. Calmann-Lévy."
+    ]
+  },
+  {
+    "id": 32,
+    "auteur": "Jacques Paillard",
+    "profession": "Neurobiologiste et neurophysiologiste de la motricité",
+    "termes_cles": "Commande motrice, perception et action, régulation sensorimotrice, proprioception et extéroception",
+    "concepts": [
+      {
+        "terme": "Commande motrice",
+        "definition": "processus neurophysiologique par lequel le système nerveux central élabore, déclenche et ajuste l'exécution d'un mouvement."
+      },
+      {
+        "terme": "Perception et action",
+        "definition": "boucle interactive permanente où l'action transforme les perceptions et où la perception guide et corrige l'action."
+      },
+      {
+        "terme": "Régulation sensorimotrice",
+        "definition": "ajustement continu du mouvement à partir des informations sensorielles entrantes et des prédictions motrices."
+      },
+      {
+        "terme": "Proprioception et extéroception",
+        "definition": "recueil des informations issues de l'intérieur du corps (muscles, articulations, position) et de l'environnement externe (vue, toucher, audition)."
+      }
+    ],
+    "references": [
+      "Paillard, J. (1976). « Tonus, posture et mouvement ». In Kayser, C. (dir.), Physiologie (Tome II). Flammarion.",
+      "Paillard, J. (1991). Brain and Space. Oxford University Press."
+    ]
+  },
+  {
+    "id": 33,
+    "auteur": "Janusz Korczak",
+    "profession": "Médecin, pédagogue et écrivain",
+    "termes_cles": "Respect de l'enfant comme personne à part entière, droit de l'enfant, autonomie et citoyenneté enfantine",
+    "concepts": [
+      {
+        "terme": "Respect de l'enfant comme personne à part entière",
+        "definition": "reconnaissance de l'enfant comme un être humain actuel et complet, digne de considération, et non comme un simple être en devenir."
+      },
+      {
+        "terme": "Droit de l'enfant",
+        "definition": "affirmation des droits fondamentaux de l'enfant, notamment le droit d'être respecté, d'être entendu et de vivre dans un cadre digne."
+      },
+      {
+        "terme": "Autonomie et citoyenneté enfantine",
+        "definition": "participation active des enfants à la vie collective et à l'élaboration des règles communes (notamment par des institutions comme le tribunal ou le parlement des enfants)."
+      }
+    ],
+    "references": [
+      "Korczak, J. (1919/1998). Comment aimer un enfant. Robert Laffont.",
+      "Korczak, J. (1929/2009). Le droit de l'enfant au respect. Fabert."
+    ]
+  },
+  {
+    "id": 34,
+    "auteur": "Jean Epstein",
+    "profession": "Cinéaste et théoricien du cinéma",
+    "termes_cles": "Photogénie, cinéphilie / mouvement cinématographique, conscience machine / intelligence du cinéma",
+    "concepts": [
+      {
+        "terme": "Photogénie",
+        "definition": "qualité propre à l'image cinématographique qui révèle et amplifie la valeur expressive et émotionnelle d'un être ou d'un objet par le mouvement et le cadrage."
+      },
+      {
+        "terme": "Cinéphilie / mouvement cinématographique",
+        "definition": "passion et réflexion sur le cinéma comme art du mouvement, du rythme et de la perception renouvelée du réel."
+      },
+      {
+        "terme": "Conscience machine / intelligence du cinéma",
+        "definition": "capacité du dispositif cinématographique à produire une perception non humaine, mobile et révélatrice du monde."
+      }
+    ],
+    "references": [
+      "Korczak, J. (1919/1998). Comment aimer un enfant. Robert Laffont.",
+      "Korczak, J. (1929/2009). Le droit de l'enfant au respect. Fabert."
+    ]
+  },
+  {
+    "id": 35,
+    "auteur": "Jean Piaget",
+    "profession": "Psychologue du développement et épistémologue",
+    "termes_cles": "Assimilation, accommodation, équilibration, schèmes, stades du développement cognitif (sensorimoteur, préopératoire, opératoire concret, formel), permanence de l'objet",
+    "concepts": [
+      {
+        "terme": "Assimilation",
+        "definition": "intégration de nouvelles informations ou expériences dans des structures ou schèmes déjà existants."
+      },
+      {
+        "terme": "Accommodation",
+        "definition": "modification des schèmes existants pour s'adapter à une situation ou un objet nouveau qui résiste à l'assimilation."
+      },
+      {
+        "terme": "Équilibration",
+        "definition": "processus d'autorégulation par lequel l'individu cherche un équilibre dynamique entre assimilation et accommodation."
+      },
+      {
+        "terme": "Schèmes",
+        "definition": "structures organisées d'actions ou de pensées (sensorimotrices puis opératoires) transférables et généralisables à des situations analogues."
+      },
+      {
+        "terme": "Stades du développement cognitif",
+        "definition": "étapes successives de construction de l'intelligence (sensorimoteur, préopératoire, opératoire concret, formel)."
+      },
+      {
+        "terme": "Permanence de l'objet",
+        "definition": "compréhension que l'objet continue d'exister même lorsqu'il échappe temporairement à la perception directe."
+      }
+    ],
+    "references": [
+      "Piaget, J. (1936). La naissance de l'intelligence chez l'enfant. Delachaux et Niestlé.",
+      "Piaget, J., & Inhelder, B. (1966). La psychologie de l'enfant. PUF."
+    ]
+  },
+  {
+    "id": 36,
+    "auteur": "Jean-Pierre Yernaux",
+    "profession": "Psychomotricien et formateur d'adultes",
+    "termes_cles": "Psychomotricité et lien social, identité professionnelle du psychomotricien, approche relationnelle et corporelle",
+    "concepts": [
+      {
+        "terme": "Psychomotricité et lien social",
+        "definition": "rôle de l'approche psychomotrice dans le maintien, la restauration et l'enrichissement des liens relationnels et sociaux."
+      },
+      {
+        "terme": "Identité professionnelle du psychomotricien",
+        "definition": "repères déontologiques, cliniques et corporels définissant la spécificité du métier de psychomotricien."
+      },
+      {
+        "terme": "Approche relationnelle et corporelle",
+        "definition": "pratique fondée sur la rencontre, l'engagement corporel et l'ajustement mutuel."
+      }
+    ],
+    "references": [
+      "Yernaux, J.-P. — Articles et interventions sur l'identité professionnelle et la clinique psychomotrice (revues francophones de psychomotricité / Belgique)."
+    ]
+  },
+  {
+    "id": 37,
+    "auteur": "John Bowlby",
+    "profession": "Psychiatre et psychanalyste",
+    "termes_cles": "Théorie de l'attachement, figures d'attachement, base de sécurité (secure base), modèle interne opérant (MIO), protestation / détresse / détachement",
+    "concepts": [
+      {
+        "terme": "Théorie de l'attachement",
+        "definition": "théorie selon laquelle le nourrisson possède une disposition biologique innée à rechercher la proximité d'un adulte protecteur pour assurer sa survie et sa sécurité."
+      },
+      {
+        "terme": "Figures d'attachement",
+        "definition": "personnes privilégiées vers lesquelles l'enfant se tourne en situation de détresse, de fatigue ou d'insécurité."
+      },
+      {
+        "terme": "Base de sécurité (secure base)",
+        "definition": "figure d'attachement fiable à partir de laquelle l'enfant peut explorer le monde et vers laquelle il peut revenir pour être rassuré."
+      },
+      {
+        "terme": "Modèle interne opérant (MIO)",
+        "definition": "représentation mentale inconsciente de soi, des autres et des relations construite à partir des expériences d'attachement."
+      },
+      {
+        "terme": "Protestation / détresse / détachement",
+        "definition": "phases réactionnelles observées chez le jeune enfant face à une séparation prolongée ou une rupture du lien d'attachement."
+      }
+    ],
+    "references": [
+      "Bowlby, J. (1969/1978). Attachement et perte (Vol. 1 : L'attachement). PUF.",
+      "Bowlby, J. (1973/1978). Attachement et perte (Vol. 2 : La séparation). PUF.",
+      "Bowlby, J. (1988). A Secure Base. Routledge."
+    ]
+  },
+  {
+    "id": 38,
+    "auteur": "Julian de Ajuriaguerra",
+    "profession": "Neurologue et psychiatre",
+    "termes_cles": "Dialogue tonique (approfondissement clinique), syndromes psychomoteurs, organisation psychomotrice, relaxation thérapeutique",
+    "concepts": [
+      {
+        "terme": "Dialogue tonique (approfondissement clinique)",
+        "definition": "élaboration clinique de l'échange tonico-postural et affectif entre le sujet et l'autre, au cœur de la relation et de la relaxation."
+      },
+      {
+        "terme": "Syndromes psychomoteurs",
+        "definition": "ensembles organisés de troubles toniques, moteurs et relationnels (ex. : instabilité, inhibition, maladresse, tics)."
+      },
+      {
+        "terme": "Organisation psychomotrice",
+        "definition": "agencement dynamique du tonus, de la posture, du geste, de l'espace et du temps en lien avec la vie psychique."
+      },
+      {
+        "terme": "Relaxation thérapeutique",
+        "definition": "méthode de travail corporel et tonique visant la réorganisation de l'expérience corporelle et l'apaisement des tensions."
+      }
+    ],
+    "references": [
+      "Ajuriaguerra, J. de (1970). Manuel de psychiatrie de l'enfant. Masson.",
+      "Ajuriaguerra, J. de, & Cahen, M. (1960). « Tonus corporel et relation avec autrui ». Revue de Médecine Psychosomatique."
+    ]
+  },
+  {
+    "id": 39,
+    "auteur": "Marc Thiry",
+    "profession": "Kinésithérapeute, psychomotricien, haptonome et enseignant",
+    "termes_cles": "Approche Snoezelen (sensorialité, sécurisation, « être » plutôt que « faire »), haptonomie / contact affectif, communication sensorielle",
+    "concepts": [
+      {
+        "terme": "Approche Snoezelen (sensorialité, sécurisation, « être » plutôt que « faire »)",
+        "definition": "démarche d'accompagnement multisensoriel visant l'apaisement, le bien-être et la relation dans une atmosphère sécurisante et non performative."
+      },
+      {
+        "terme": "Haptonomie / contact affectif",
+        "definition": "approche centrée sur le toucher affectif, sécurisant et confirmant qui soutient l'autre dans son être."
+      },
+      {
+        "terme": "Communication sensorielle",
+        "definition": "échange fondé sur les perceptions sensorielles et la qualité du contact lorsque le langage verbal est limité ou difficile."
+      }
+    ],
+    "references": [
+      "Thiry, M. — Travaux, formations et supports pédagogiques sur l'approche Snoezelen et l'accompagnement psychomoteur (Belgique / HEPN)."
+    ]
+  },
+  {
+    "id": 40,
+    "auteur": "Marion Milner",
+    "profession": "Psychanalyste et peintre",
+    "termes_cles": "Espaces / zones d'illusion, créativité et activité picturale, pliable medium (médium malléable), concentration / attention non dirigée",
+    "concepts": [
+      {
+        "terme": "Espaces / zones d'illusion",
+        "definition": "lieux psychiques intermédiaires où l'imagination, la rêverie et la création peuvent se déployer librement."
+      },
+      {
+        "terme": "Créativité et activité picturale",
+        "definition": "rôle du dessin et de la création artistique dans l'exploration de soi et l'émergence de formes nouvelles."
+      },
+      {
+        "terme": "Pliable medium (médium malléable)",
+        "definition": "matériau souple et réceptif qui se laisse modeler et transformer sans opposer une résistance rigide ou destructrice."
+      },
+      {
+        "terme": "Concentration / attention non dirigée",
+        "definition": "mode d'attention ouverte, réceptive et non forcée permettant l'émergence d'idées ou d'éprouvés implicites."
+      }
+    ],
+    "references": [
+      "Milner, M. (1950). On Not Being Able to Paint. Heinemann.",
+      "Milner, M. (1952). « Aspects of symbolism in comprehension of the not-self ». International Journal of Psycho-Analysis."
+    ]
+  },
+  {
+    "id": 41,
+    "auteur": "Mihály Csíkszentmihályi",
+    "profession": "Psychologue",
+    "termes_cles": "Flow (état d'absorption / expérience optimale), équilibre défi-compétence, motivation intrinsèque",
+    "concepts": [
+      {
+        "terme": "Flow (état d'absorption / expérience optimale)",
+        "definition": "état de concentration intense, d'engagement total et de plaisir éprouvé dans une activité qui capte pleinement l'attention."
+      },
+      {
+        "terme": "Équilibre défi-compétence",
+        "definition": "ajustement entre le niveau de difficulté de la tâche et les capacités de la personne, favorisant l'émergence du flow (ni ennui, ni anxiété)."
+      },
+      {
+        "terme": "Motivation intrinsèque",
+        "definition": "engagement dans une activité pour la satisfaction, l'intérêt ou l'expérience qu'elle procure en elle-même."
+      }
+    ],
+    "references": [
+      "Csíkszentmihályi, M. (1990). Flow: The Psychology of Optimal Experience. Harper & Row (trad. fr. Vivre : la psychologie du bonheur, Robert Laffont, 2004)."
+    ]
+  },
+  {
+    "id": 42,
+    "auteur": "Paul Ricoeur",
+    "profession": "Philosophe",
+    "termes_cles": "Identité narrative, herméneutique, soi-même comme un autre, interprétation et reconnaissance",
+    "concepts": [
+      {
+        "terme": "Identité narrative",
+        "definition": "identité d'une personne qui se construit et se comprend à travers les récits qu'elle fait de sa vie et de ses actions."
+      },
+      {
+        "terme": "Herméneutique",
+        "definition": "art et théorie de l'interprétation visant à comprendre le sens des textes, des symboles et des actions humaines."
+      },
+      {
+        "terme": "Soi-même comme un autre",
+        "definition": "conception de l'identité articulant la permanence de soi dans le temps et l'altérité relationnelle et éthique."
+      },
+      {
+        "terme": "Interprétation et reconnaissance",
+        "definition": "démarche de compréhension médiatisée par les signes et les récits, associée à la quête de reconnaissance mutuelle."
+      }
+    ],
+    "references": [
+      "Ricoeur, P. (1983–1985). Temps et récit (Tomes 1 à 3). Seuil.",
+      "Ricoeur, P. (1990). Soi-même comme un autre. Seuil.",
+      "Ricoeur, P. (2004). Parcours de la reconnaissance. Stock."
+    ]
+  },
+  {
+    "id": 43,
+    "auteur": "Pierre Delion",
+    "profession": "Pédopsychiatre et psychanalyste",
+    "termes_cles": "Psychothérapie institutionnelle, fonction phorique (porter, soutenir, transporter), holding institutionnel, accueil de la psychose / de l'autisme",
+    "concepts": [
+      {
+        "terme": "Psychothérapie institutionnelle",
+        "definition": "approche soignante qui travaille l'institution elle-même (vie quotidienne, espaces, réunions, collectifs) comme outil thérapeutique."
+      },
+      {
+        "terme": "Fonction phorique (porter, soutenir, transporter)",
+        "definition": "fonction de portage physique, psychique et symbolique exercée par l'équipe et l'environnement auprès de personnes en difficulté."
+      },
+      {
+        "terme": "Holding institutionnel",
+        "definition": "capacité de l'équipe et du cadre institutionnel à contenir, soutenir et maintenir une continuité de soins face aux angoisses."
+      },
+      {
+        "terme": "Accueil de la psychose / de l'autisme",
+        "definition": "démarche clinique et institutionnelle attentive au rythme, aux particularités sensorielles et à l'altérité des personnes concernées."
+      }
+    ],
+    "references": [
+      "Delion, P. (2000). L'enfant autiste, le bébé et la sémiotique. PUF.",
+      "Delion, P. (2018). Fonction phorique, holding et institution. Érès."
+    ]
+  },
+  {
+    "id": 44,
+    "auteur": "René Descartes",
+    "profession": "Philosophe et mathématicien",
+    "termes_cles": "Dualisme corps-esprit (res cogitans / res extensa), glande pinéale, mécanisme corporel, doute méthodique",
+    "concepts": [
+      {
+        "terme": "Dualisme corps-esprit (res cogitans / res extensa)",
+        "definition": "distinction philosophique entre la substance pensante immatérielle (res cogitans) et la substance corporelle étendue dans l'espace (res extensa)."
+      },
+      {
+        "terme": "Glande pinéale",
+        "definition": "structure cérébrale que Descartes considérait comme le point de rencontre particulier entre l'âme et le corps."
+      },
+      {
+        "terme": "Mécanisme corporel",
+        "definition": "conception du corps humain (et animal) fonctionnant selon des lois physiques et mécaniques semblables à celles d'une machine."
+      },
+      {
+        "terme": "Doute méthodique",
+        "definition": "démarche consistant à suspendre provisoirement tout ce qui peut être mis en doute afin de rechercher une vérité certaine et indubitable."
+      }
+    ],
+    "references": [
+      "Descartes, R. (1637). Discours de la méthode.",
+      "Descartes, R. (1641). Méditations métaphysiques.",
+      "Descartes, R. (1649). Les Passions de l'âme."
+    ]
+  },
+  {
+    "id": 45,
+    "auteur": "René Roussillon",
+    "profession": "Psychanalyste et professeur de psychologie clinique",
+    "termes_cles": "Médium malléable, symbolisation primaire et secondaire, clivage et retour du clivé, associativité et jeu, objet trouvé-créé",
+    "concepts": [
+      {
+        "terme": "Médium malléable",
+        "definition": "objet ou matériau (et fonction de l'environnement/du thérapeute) qui est indéfiniment transformable, sensible, indestructible, disponible et inconditionnel pour soutenir la symbolisation."
+      },
+      {
+        "terme": "Symbolisation primaire et secondaire",
+        "definition": "la symbolisation primaire transforme les éprouvés bruts/archaïques en représentations-choses ou traces figurables ; la symbolisation secondaire les articule dans des chaînes représentatives et verbales."
+      },
+      {
+        "terme": "Clivage et retour du clivé",
+        "definition": "mécanisme par lequel des parties de la vie psychique ou d'une expérience sont séparées et tenues à distance, tout en tendant à réapparaître sous d'autres formes."
+      },
+      {
+        "terme": "Associativité et jeu",
+        "definition": "libre circulation des représentations et des mises en jeu permettant d'explorer et d'élaborer les mouvements psychiques."
+      },
+      {
+        "terme": "Objet trouvé-créé",
+        "definition": "expérience où l'objet rencontré dans la réalité externe correspond suffisamment à l'attente interne pour être à la fois découvert et subjectivement créé."
+      }
+    ],
+    "references": [
+      "Roussillon, R. (1991). Paradoxes et situations limites de la psychanalyse. PUF.",
+      "Roussillon, R. (1999). Agonie, clivage et symbolisation. PUF.",
+      "Roussillon, R. (2008). Le jeu et l'entre-je(u). PUF."
+    ]
+  },
+  {
+    "id": 46,
+    "auteur": "René Spitz",
+    "profession": "Psychanalyste et psychiatre",
+    "termes_cles": "Hospitalisme, dépression anaclitique, organisateurs de la psyché (sourire social, angoisse du 8e mois, le « non »), relation d'objet",
+    "concepts": [
+      {
+        "terme": "Hospitalisme",
+        "definition": "ensemble de troubles graves (développementaux, affectifs, somatiques et relationnels) observés chez des nourrissons placés en institution avec carence affective et relationnelle."
+      },
+      {
+        "terme": "Dépression anaclitique",
+        "definition": "tableau dépressif survenant chez un bébé après la perte brusque d'une relation affective satisfaisante et d'un objet d'attachement privilégié."
+      },
+      {
+        "terme": "Organisateurs de la psyché (sourire social, angoisse du 8e mois, le « non »)",
+        "definition": "jalons développementaux marqués par des réactions spécifiques qui signalent une réorganisation profonde de la vie psychique et relationnelle."
+      },
+      {
+        "terme": "Relation d'objet",
+        "definition": "modalité d'investissement affectif et relationnel d'un sujet envers l'autre (l'« objet » au sens psychanalytique)."
+      }
+    ],
+    "references": [
+      "Spitz, R. A. (1945). « Hospitalism ». The Psychoanalytic Study of the Child.",
+      "Spitz, R. A. (1965/1968). De la naissance à la parole : la première année de la vie. PUF."
+    ]
+  },
+  {
+    "id": 47,
+    "auteur": "Rudolf Laban",
+    "profession": "Chorégraphe, danseur et théoricien du mouvement",
+    "termes_cles": "Laban Movement Analysis (LMA), facteurs du mouvement : flux (flow : libre / retenu), espace (direct / indirect), poids (ferme / léger), temps (soudain / soutenu), kinésphère",
+    "concepts": [
+      {
+        "terme": "Laban Movement Analysis (LMA)",
+        "definition": "système d'observation, de description et d'analyse du mouvement humain (corps, effort, espace, forme)."
+      },
+      {
+        "terme": "Facteurs du mouvement (flux, espace, poids, temps)",
+        "definition": "dimensions qualitatives de l'effort dansant/mouvement :"
+      },
+      {
+        "terme": "Flux (flow)",
+        "definition": "continuité et contrôle du mouvement (libre/fluide vs retenu/contrôlé)."
+      },
+      {
+        "terme": "Espace",
+        "definition": "orientation et trajectoire du mouvement (direct/linéaire vs indirect/souple/multidirectionnel)."
+      },
+      {
+        "terme": "Poids",
+        "definition": "rapport à la gravité et dosage de la force/intention (ferme/fort vs léger/délicat)."
+      },
+      {
+        "terme": "Temps",
+        "definition": "rapidité et urgence ou étirement du mouvement (soudain/rapide vs soutenu/progressif)."
+      },
+      {
+        "terme": "Kinésphère",
+        "definition": "sphère d'espace personnelle entourant le corps et accessible par l'extension des membres sans déplacement du lieu d'ancrage."
+      }
+    ],
+    "references": [
+      "Laban, R. (1950). The Mastery of Movement on the Stage (trad. fr. La maîtrise du mouvement, Actes Sud, 1994).",
+      "Laban, R., & Lawrence, F. C. (1947). Effort. Macdonald & Evans."
+    ]
+  },
+  {
+    "id": 48,
+    "auteur": "Sandrine Perrière",
+    "profession": "Psychothérapeute / praticienne en relation d'aide et accompagnement corporel (à préciser selon le contexte précis de ton cours)",
+    "termes_cles": "Approche relationnelle et corporelle / accompagnement psychocorporel",
+    "concepts": [
+      {
+        "terme": "Approche relationnelle et corporelle / accompagnement psychocorporel",
+        "definition": "démarche d'accompagnement attentive à la relation, au ressenti corporel et aux processus émotionnels de la personne."
+      }
+    ],
+    "references": [
+      "Supports et enseignements cliniques en accompagnement relationnel et psychocorporel (à compléter selon le support de ton cours)."
+    ]
+  },
+  {
+    "id": 49,
+    "auteur": "Sigmund Freud",
+    "profession": "Neurologue et fondateur de la psychanalyse",
+    "termes_cles": "Inconscient, ça / moi / surmoi, pulsions (Éros / Thanatos, pulsion de vie / de mort), refoulement, transfert, mécanismes de défense, stade du miroir / œdipe",
+    "concepts": [
+      {
+        "terme": "Inconscient",
+        "definition": "instance et lieu psychique regroupant des contenus refoulés ou non conscients (représentations, affects, désirs) qui agissent sur la vie psychique et les comportements."
+      },
+      {
+        "terme": "Ça / moi / surmoi",
+        "definition": "trois instances de la seconde topique : le ça (pôle pulsionnel et inconscient), le moi (instance de médiation avec la réalité, le ça et le surmoi) et le surmoi (intériorisation des interdits, exigences morales et idéaux)."
+      },
+      {
+        "terme": "Pulsions (Éros / Thanatos, pulsion de vie / de mort)",
+        "definition": "poussées dynamiques à la frontière du somatique et du psychique, orientées vers la liaison et la préservation de la vie (Éros) ou vers la déliaison, la réduction des tensions et la destruction (Thanatos)."
+      },
+      {
+        "terme": "Refoulement",
+        "definition": "mécanisme de défense par lequel des représentations ou souvenirs liés à une pulsion sont maintenus dans l'inconscient lorsque leur accès à la conscience engendrerait du déplaisir ou de l'angoisse."
+      },
+      {
+        "terme": "Transfert",
+        "definition": "déplacement sur la personne du thérapeute de sentiments, désirs, attentes et conflits inconscients issus de relations antérieures."
+      },
+      {
+        "terme": "Mécanismes de défense",
+        "definition": "opérations psychiques (souvent inconscientes) mises en jeu par le moi pour réduire l'angoisse et protéger l'équilibre psychique."
+      },
+      {
+        "terme": "Stade du miroir / œdipe",
+        "definition": ""
+      },
+      {
+        "terme": "Œdipe",
+        "definition": "complexe organisateur du psychisme marqué par l'attirance ambivalente envers le parent de sexe opposé et la rivalité/identification avec le parent de même sexe."
+      }
+    ],
+    "references": [
+      "Freud, S. (1900). L'Interprétation du rêve.",
+      "Freud, S. (1915). Métapsychologie (« Pulsions et destins des pulsions », « Le refoulement »).",
+      "Freud, S. (1923). Le Moi et le Ça."
+    ]
+  },
+  {
+    "id": 50,
+    "auteur": "Sophie Marinopoulos",
+    "profession": "Psychologue clinicienne et psychanalyste",
+    "termes_cles": "Santé culturelle, parentalité / naissance d'un parent, jeu libre et créativité de l'enfant, berceuse / espace transitionnel et accueil familial",
+    "concepts": [
+      {
+        "terme": "Santé culturelle",
+        "definition": "dimension culturelle et symbolique du bien-être et de la santé psychique, incluant l'accès aux arts, aux contes, aux berceuses et aux rites partagés."
+      },
+      {
+        "terme": "Parentalité / naissance d'un parent",
+        "definition": "processus de transformation psychique, identitaire et relationnel vécu par les adultes à l'arrivée d'un enfant."
+      },
+      {
+        "terme": "Jeu libre et créativité de l'enfant",
+        "definition": "espace spontané d'exploration et de création permettant à l'enfant d'éprouver sa liberté et de symboliser."
+      },
+      {
+        "terme": "Berceuse / espace transitionnel et accueil familial",
+        "definition": "supports d'apaisement, de lien et d'accueil favorisant la sécurité et la rencontre entre l'enfant et ses proches."
+      }
+    ],
+    "references": [
+      "Marinopoulos, S. (2005). Dans l'intime des mères. Fayard.",
+      "Marinopoulos, S. (2019). Une stratégie nationale pour la Santé Culturelle (Rapport ministériel)."
+    ]
+  },
+  {
+    "id": 51,
+    "auteur": "Stephen Porges",
+    "profession": "Neuroscientifique et psychologue",
+    "termes_cles": "Théorie polyvagale (TPV), système vague ventral (engagement social), système sympathique (combat/fuite), vague dorsal (figement/immobilisation), neuroception",
+    "concepts": [
+      {
+        "terme": "Théorie polyvagale (TPV)",
+        "definition": "modèle neurophysiologique décrivant comment le système nerveux autonome hiérarchise les réponses de sécurité, de mobilisation et d'immobilisation selon le contexte."
+      },
+      {
+        "terme": "Système vague ventral (engagement social)",
+        "definition": "voie parasympathique favorisant le calme, la régulation, la communication faciale/vocale et la relation sociale sécurisée."
+      },
+      {
+        "terme": "Système sympathique (combat/fuite)",
+        "definition": "voie de mobilisation énergétique préparant l'organisme à l'action, à la défense ou à la fuite face à une menace."
+      },
+      {
+        "terme": "Vague dorsal (figement/immobilisation)",
+        "definition": "voie parasympathique plus archaïque associée au ralentissement, à l'économie d'énergie, au repli ou à la sidération/dissociation face à un danger extrême."
+      },
+      {
+        "terme": "Neuroception",
+        "definition": "détection inconsciente et automatique par le système nerveux des indices de sécurité, de danger ou de menace de mort dans l'environnement et les relations."
+      }
+    ],
+    "references": [
+      "Porges, S. W. (2011). The Polyvagal Theory. W. W. Norton (trad. fr. La théorie polyvagale, EDP Sciences, 2021)."
+    ]
+  },
+  {
+    "id": 52,
+    "auteur": "Suzanne Robert-Ouvray",
+    "profession": "Psychomotricienne, psychologue clinicienne et auteure",
+    "termes_cles": "Intégration motrice primordiale (IMP), dialogues tonico-émotionnels précoces, hypertonie / hypotonie, étapes du développement psychomoteur",
+    "concepts": [
+      {
+        "terme": "Intégration motrice primordiale (IMP)",
+        "definition": "processus de maturation et d'intégration des réflexes, schèmes et coordinations motrices précoces qui soutient le développement psychique et cognitif."
+      },
+      {
+        "terme": "Dialogues tonico-émotionnels précoces",
+        "definition": "échanges corporels et toniques très précoces entre le bébé et l'adulte véhiculant sécurité, émotions et repères."
+      },
+      {
+        "terme": "Hypertonie / hypotonie",
+        "definition": "variations du tonus musculaire caractérisées respectivement par un excès de tension/résistance musculaire (hypertonie) ou par un tonus diminué/relâché (hypotonie)."
+      },
+      {
+        "terme": "Étapes du développement psychomoteur",
+        "definition": "séquences d'évolution posturale, motrice et sensorielle jalonnant la construction du bébé et de l'enfant."
+      }
+    ],
+    "references": [
+      "Robert-Ouvray, S. (1993). Intégration motrice et développement psychique. Desclée de Brouwer.",
+      "Robert-Ouvray, S. (1996). L'enfant tonique et sa mère. Desclée de Brouwer."
+    ]
+  },
+  {
+    "id": 53,
+    "auteur": "Sylvie Donnet",
+    "profession": "Rééducatrice / psychomotricienne et psychologue",
+    "termes_cles": "Éducation psychomotrice, découpage ternaire de l'espace (plaisir sensori-moteur, plaisir symbolique, pensée opératoire / création), décentration",
+    "concepts": [
+      {
+        "terme": "Éducation psychomotrice",
+        "definition": "approche éducative utilisant le mouvement, le jeu et l'espace pour accompagner le développement global de l'enfant."
+      },
+      {
+        "terme": "Découpage ternaire de l'espace (plaisir sensori-moteur, plaisir symbolique, pensée opératoire / création)",
+        "definition": "organisation de l'espace d'activité en trois registres progressifs permettant le passage du jeu sensori-moteur au symbolisme puis à l'activité plus structurée/créative."
+      },
+      {
+        "terme": "Décentration",
+        "definition": "capacité à dépasser le point de vue ou l'impulsion immédiate pour adopter d'autres perspectives ou modalités d'action."
+      }
+    ],
+    "references": [
+      "Donnet, S. — Travaux cliniques et pédagogiques en éducation psychomotrice (en lien avec les dispositifs d'espace ternaire de la PPA)."
+    ]
+  },
+  {
+    "id": 54,
+    "auteur": "Virginie Axaline",
+    "profession": "Psychologue",
+    "termes_cles": "Thérapie par le jeu centrée sur l'enfant (Non-directive Play Therapy), huit principes de la relation thérapeutique par le jeu, acceptation inconditionnelle",
+    "concepts": [
+      {
+        "terme": "Thérapie par le jeu centrée sur l'enfant (Non-directive Play Therapy)",
+        "definition": "approche thérapeutique où l'enfant dirige librement son jeu dans un cadre sécurisant tandis que le thérapeute l'accompagne sans diriger ni forcer."
+      },
+      {
+        "terme": "Huit principes de la relation thérapeutique par le jeu",
+        "definition": "règles d'attitude du thérapeute (chaleur, acceptation, permissivité, reconnaissance des sentiments, respect de l'autonomie de l'enfant, non-directivité, progressivité, limites réalistes)."
+      },
+      {
+        "terme": "Acceptation inconditionnelle",
+        "definition": "accueil de l'enfant et de ses émotions sans jugement ni critique, tout en posant des limites claires et nécessaires à la sécurité."
+      }
+    ],
+    "references": [
+      "Axline, V. M. (1947). Play Therapy. Houghton Mifflin.",
+      "Axline, V. M. (1964). Dibs in Search of Self (trad. fr. Dibs à la recherche de soi, Flammarion)."
+    ]
+  },
+  {
+    "id": 55,
+    "auteur": "Wilhelm Griesinger",
+    "profession": "Psychiatre et neurologue",
+    "termes_cles": "Corrélat cérébral des maladies mentales (« les maladies mentales sont des maladies du cerveau »), unité des psychoses",
+    "concepts": [
+      {
+        "terme": "Corrélat cérébral des maladies mentales (« les maladies mentales sont des maladies du cerveau »)",
+        "definition": "thèse psychiatrique affirmant que les troubles mentaux s'enracinent dans des processus neurobiologiques et cérébraux."
+      },
+      {
+        "terme": "Unité des psychoses",
+        "definition": "conception selon laquelle les différentes formes de psychoses représentent des degrés ou manifestations variées d'un même processus pathologique fondamental."
+      }
+    ],
+    "references": [
+      "Griesinger, W. (1845). Die Pathologie und Therapie der psychischen Krankheiten (trad. fr. Traité des maladies mentales, 1865)."
+    ]
+  }
+];
+        const VOCAB_DATA = [
+  {
+    "terme": "Appuis, soutiens, poussées",
+    "definition": "mécanismes tonico-posturaux fondamentaux qui permettent à l'enfant de s'ancrer dans l'espace, de se redresser et d'organiser ses mouvements.",
+    "auteur": "Albert Coeman"
+  },
+  {
+    "terme": "Axe corporel",
+    "definition": "ligne de référence centrale du corps assurant l'équilibre, la stabilité et l'orientation spatiale.",
+    "auteur": "Albert Coeman"
+  },
+  {
+    "terme": "Engagement corporel",
+    "definition": "implication active et globale du corps de l'enfant (et du thérapeute) dans l'action et la relation.",
+    "auteur": "Albert Coeman"
+  },
+  {
+    "terme": "Structuration psychomotrice & spatialité du jeune enfant",
+    "definition": "construction progressive du rapport au corps, à l'espace et aux repères moteurs au fil du développement.",
+    "auteur": "Albert Coeman"
+  },
+  {
+    "terme": "Étapes du développement psychomoteur (0–3 ans)",
+    "definition": "évolution progressive des compétences posturales, motrices, sensorielles et relationnelles du tout-petit.",
+    "auteur": "Marie Raulier"
+  },
+  {
+    "terme": "Appuis et soutiens",
+    "definition": "bases corporelles et relationnelles indispensables pour sécuriser la posture et favoriser la mobilité autonome.",
+    "auteur": "Marie Raulier"
+  },
+  {
+    "terme": "Engagement corporel dans le cadre quotidien",
+    "definition": "mobilisation du corps dans les routines, les soins et les jeux ordinaires pour soutenir la construction psychomotrice.",
+    "auteur": "Marie Raulier"
+  },
+  {
+    "terme": "Régulation affective dyadique",
+    "definition": "co-régulation des états émotionnels entre le nourrisson et son donneur de soins via des échanges interactifs et communicatifs.",
+    "auteur": "Allan Schore"
+  },
+  {
+    "terme": "Neurobiologie interpersonnelle",
+    "definition": "approche reliant les interactions relationnelles précoces à la maturation et au fonctionnement des circuits cérébraux.",
+    "auteur": "Allan Schore"
+  },
+  {
+    "terme": "Cerveau droit émotionnel",
+    "definition": "hémisphère cérébral dominant dans les premières années pour le traitement implicite des émotions, du stress et de la communication non verbale.",
+    "auteur": "Allan Schore"
+  },
+  {
+    "terme": "Attachement et maturation du cortex orbitofrontal",
+    "definition": "influence des liens d'attachement précoces sur le développement des zones frontales impliquées dans la régulation émotionnelle et comportementale.",
+    "auteur": "Allan Schore"
+  },
+  {
+    "terme": "Instrument corporel",
+    "definition": "ensemble des moyens sensori-moteurs et tonico-posturaux dont dispose l'organisme pour agir sur le milieu et se construire.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Milieu / environnement",
+    "definition": "ensemble des sollicitations physiques, sensorielles, matérielles et humaines avec lesquelles l'organisme interagit.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Flux sensoriels",
+    "definition": "courants d'informations sensorielles (visuels, auditifs, tactiles, vestibulaires, proprioceptifs) provenant de l'intérieur ou de l'extérieur du corps.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Organisme",
+    "definition": "totalité biologique soumise aux lois physiques et physiologiques, en interaction constante avec son milieu.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Équilibration tonico-posturale",
+    "definition": "ajustement continu des tensions musculaires et de la posture face à la gravité et aux flux sensoriels.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Enveloppe corporelle",
+    "definition": "frontière sensorielle et tonique permettant de délimiter le dedans et le dehors et d'unifier les perceptions.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Espace sensori-moteur",
+    "definition": "espace structuré par l'articulation entre les perceptions sensorielles, les postures et les actions motrices.",
+    "auteur": "André Bullinger"
+  },
+  {
+    "terme": "Psychomotricité relationnelle",
+    "definition": "approche thérapeutique et éducative centrée sur le vécu corporel, l'expression émotionnelle et la relation à l'autre.",
+    "auteur": "André Lapierre"
+  },
+  {
+    "terme": "Vécu corporel",
+    "definition": "expérience subjective et globale du corps ressentie à travers les sensations, les émotions et le mouvement.",
+    "auteur": "André Lapierre"
+  },
+  {
+    "terme": "Tonus relationnel / dialogue tonique",
+    "definition": "échanges de tensions musculaires et d'ajustements posturaux porteurs de sens émotionnel et relationnel.",
+    "auteur": "André Lapierre"
+  },
+  {
+    "terme": "Symbolisation motrice",
+    "definition": "passage d'une décharge ou d'un geste moteur brut à une représentation symbolique via le jeu et l'expression corporelle.",
+    "auteur": "André Lapierre"
+  },
+  {
+    "terme": "Éducation psychomotrice",
+    "definition": "démarche visant l'épanouissement global de la personne à travers l'expérience corporelle et motrice.",
+    "auteur": "André Lapierre"
+  },
+  {
+    "terme": "Formation corporelle",
+    "definition": "travail expérientiel sur son propre corps, son tonus, sa posture et son engagement afin de développer une posture professionnelle clinique.",
+    "auteur": "Anne Van Den Brill"
+  },
+  {
+    "terme": "Cadre et médiation psychomotrice",
+    "definition": "organisation sécurisante du temps, de l'espace, des règles et des objets/activités pour soutenir le processus thérapeutique.",
+    "auteur": "Anne Van Den Brill"
+  },
+  {
+    "terme": "Accompagnement clinique",
+    "definition": "présence étayante et ajustée auprès d'une personne ou d'un groupe en respectant son rythme et son histoire.",
+    "auteur": "Anne Van Den Brill"
+  },
+  {
+    "terme": "Conatus",
+    "definition": "effort ou tendance essentielle de tout être à persévérer dans son être et à accroître sa puissance d'agir et de penser.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Affects (affectus",
+    "definition": "joie, tristesse, désir) : modifications du corps et de l'esprit qui augmentent (joie) ou diminuent (tristesse) la puissance d'agir, articulées autour du désir.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Parallélisme / unité corps-esprit (attributs de la substance)",
+    "definition": "conception selon laquelle le corps et l'esprit ne sont pas deux substances séparées, mais l'expression sous deux attributs différents d'une même réalité.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Raison",
+    "definition": "mode de connaissance permettant de comprendre les causes et les liens nécessaires des choses plutôt que de subir des idées confuses.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Adéquation des idées",
+    "definition": "justesse d'une idée claire et distincte qui exprime l'essence d'une chose et favorise l'autonomie psychique.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Puissance d'agir",
+    "definition": "capacité effective d'un individu à agir, à comprendre et à transformer ses affects de manière active.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Béatitude / liberté",
+    "definition": "état d'apaisement et d'autonomie intérieure atteint par la compréhension rationnelle et l'amour intellectuel de la nature/de Dieu.",
+    "auteur": "Baruch Spinoza"
+  },
+  {
+    "terme": "Anatomie psychomotrice",
+    "definition": "lecture du corps unissant repères anatomiques, physiologiques et significations psychiques et relationnelles.",
+    "auteur": "Benoît Lesage"
+  },
+  {
+    "terme": "Corporéité",
+    "definition": "manière singulière dont un sujet habite, ressent et exprime son corps dans le monde et dans la relation.",
+    "auteur": "Benoît Lesage"
+  },
+  {
+    "terme": "Étayage corporel",
+    "definition": "soutien postural, tonique et relationnel qui aide le sujet à se structurer et à se sentir contenu.",
+    "auteur": "Benoît Lesage"
+  },
+  {
+    "terme": "Cohérence posturale",
+    "definition": "harmonie dynamique entre l'alignement corporel, l'équilibre tonique et l'intention d'action ou de relation.",
+    "auteur": "Benoît Lesage"
+  },
+  {
+    "terme": "Expressivité du geste",
+    "definition": "valeur communicative, émotionnelle et symbolique portée par le mouvement au-delà de sa seule efficacité mécanique.",
+    "auteur": "Benoît Lesage"
+  },
+  {
+    "terme": "Instauration du corps",
+    "definition": "processus continu par lequel le corps se construit et s'approprie comme lieu d'existence et d'identité.",
+    "auteur": "Benoît Lesage"
+  },
+  {
+    "terme": "Pratique psychomotrice aucouturière (PPA)",
+    "definition": "approche éducative et thérapeutique fondée sur le jeu spontané, l'expressivité motrice et l'accompagnement psychomoteur.",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Expressivité motrice",
+    "definition": "manière dont l'enfant manifeste ses émotions, son histoire et son monde interne par le mouvement, la posture et le jeu.",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Fantasme d'action",
+    "definition": "représentation inconsciente associée au mouvement et au jeu (ex. : détruire/construire, être avalé/recraché, se cacher/apparaître).",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Plaisir sensori-moteur",
+    "definition": "éprouvé jubilatoire lié aux sensations corporelles, au mouvement, à l'équilibre, au déséquilibre et aux jeux d'enveloppe.",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Paravent / enveloppe",
+    "definition": "espace ou dispositif (matériel, corporel ou symbolique) qui protège, délimite et transforme les sollicitations pour favoriser la sécurité.",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Décentration",
+    "definition": "capacité progressive à prendre de la distance par rapport à l'action brute et à l'émotion immédiate pour accéder à la représentation.",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Processus de symbolisation",
+    "definition": "transformation progressive des éprouvés corporels et émotionnels en représentations mentales, jeux symboliques et langage.",
+    "auteur": "Bernard Aucouturier"
+  },
+  {
+    "terme": "Intercorporéité",
+    "definition": "rencontre et résonance réciproque des corps et des éprouvés sensori-moteurs dans la relation intersubjective.",
+    "auteur": "Bernard Golse"
+  },
+  {
+    "terme": "Intersubjectivité",
+    "definition": "partage d'états mentaux, d'intentions et d'émotions entre deux sujets (notamment entre le bébé et l'adulte).",
+    "auteur": "Bernard Golse"
+  },
+  {
+    "terme": "Corps propre / corps érogène / corps imaginaire / corps symbolique",
+    "definition": "différentes dimensions du corps chez l'humain, articulant l'expérience vécue, le plaisir/les pulsions, les représentations fantasmatiques et l'inscription dans le langage/la culture.",
+    "auteur": "Bernard Golse"
+  },
+  {
+    "terme": "Filiation et affiliation",
+    "definition": "inscription généalogique (liens de parenté et d'origine) et élargissement des liens sociaux et culturels au fil du développement.",
+    "auteur": "Bernard Golse"
+  },
+  {
+    "terme": "Bisexualité psychique",
+    "definition": "articulation interne des positions identificatoires et relationnelles masculines et féminines chez tout sujet.",
+    "auteur": "Bernard Golse"
+  },
+  {
+    "terme": "Résilience",
+    "definition": "capacité d'un individu ou d'un groupe à se reconstruire et à reprendre un développement après un traumatisme ou une adversité grave.",
+    "auteur": "Boris Cyrulnik"
+  },
+  {
+    "terme": "Tuteur de résilience",
+    "definition": "personne, lieu, activité ou repère culturel qui offre un soutien affectif et symbolique permettant de surmonter l'épreuve.",
+    "auteur": "Boris Cyrulnik"
+  },
+  {
+    "terme": "Attachement",
+    "definition": "lien affectif profond et durable qui sécurise l'enfant et soutient sa confiance dans la relation.",
+    "auteur": "Boris Cyrulnik"
+  },
+  {
+    "terme": "Niche sensorielle et affective",
+    "definition": "environnement premier fait de sensations, d'odeurs, de voix, de contacts et d'attentions qui façonne les premiers repères.",
+    "auteur": "Boris Cyrulnik"
+  },
+  {
+    "terme": "Récit / narration",
+    "definition": "mise en mots ou en histoire de l'expérience vécue permettant de donner du sens à ce qui a été subi.",
+    "auteur": "Boris Cyrulnik"
+  },
+  {
+    "terme": "Approche centrée sur la personne (ACP)",
+    "definition": "méthode thérapeutique et relationnelle plaçant la personne, son expérience et son autonomie au cœur de l'accompagnement.",
+    "auteur": "Carl Rogers"
+  },
+  {
+    "terme": "Congruence / authenticité",
+    "definition": "accord juste entre ce que le thérapeute ressent intérieurement, ce qu'il vit et ce qu'il exprime dans la relation.",
+    "auteur": "Carl Rogers"
+  },
+  {
+    "terme": "Considération positive inconditionnelle",
+    "definition": "accueil chaleureux et non jugeant de la personne, indépendamment de ses comportements ou de ses réussites.",
+    "auteur": "Carl Rogers"
+  },
+  {
+    "terme": "Écoute empathique",
+    "definition": "capacité à comprendre le cadre de référence interne de l'autre avec sensibilité, comme si l'on était l'autre sans perdre sa propre identité.",
+    "auteur": "Carl Rogers"
+  },
+  {
+    "terme": "Tendance à l'actualisation",
+    "definition": "impulsion naturelle de l'organisme à se développer, se différencier et réaliser son potentiel.",
+    "auteur": "Carl Rogers"
+  },
+  {
+    "terme": "Experiential Play Therapy (EPT)",
+    "definition": "approche de thérapie par le jeu centrée sur l'expérience émotionnelle directe et la relation thérapeutique plutôt que sur la seule interprétation verbale.",
+    "auteur": "Carol & Byron Norton"
+  },
+  {
+    "terme": "Jeu métaphorique",
+    "definition": "utilisation symbolique des jouets, scénarios et mises en scène pour exprimer et transformer des conflits ou traumatismes.",
+    "auteur": "Carol & Byron Norton"
+  },
+  {
+    "terme": "Régulation du système nerveux dans le jeu",
+    "definition": "apaisement et rééquilibrage des réactions d'alerte ou de sidération grâce à des expériences ludiques sécurisantes.",
+    "auteur": "Carol & Byron Norton"
+  },
+  {
+    "terme": "Réparation du lien d'attachement",
+    "definition": "restauration d'un lien de confiance et de sécurité émotionnelle à travers la relation thérapeutique.",
+    "auteur": "Carol & Byron Norton"
+  },
+  {
+    "terme": "Corps souffrant / corps contenant",
+    "definition": "double dimension du corps pouvant être le lieu d'une douleur/d'un symptôme tout en servant d'enveloppe et de soutien psychique.",
+    "auteur": "Catherine Potel"
+  },
+  {
+    "terme": "Enveloppes psychocorporelles",
+    "definition": "frontières et contenants corporels et psychiques qui délimitent le sujet et régulent les échanges avec l'extérieur.",
+    "auteur": "Catherine Potel"
+  },
+  {
+    "terme": "Symbolisation par le corps",
+    "definition": "élaboration et mise en forme des éprouvés archaïques ou traumatiques à travers le mouvement, le tonus et la médiation corporelle.",
+    "auteur": "Catherine Potel"
+  },
+  {
+    "terme": "Clinique du lien",
+    "definition": "approche thérapeutique attentive à la qualité, aux ruptures et à la restauration des liens relationnels et corporels.",
+    "auteur": "Catherine Potel"
+  },
+  {
+    "terme": "Cadre thérapeutique contenant",
+    "definition": "ensemble des repères stables (temps, espace, règles, attitude du psychomotricien) qui sécurise et rend possible le travail psychique.",
+    "auteur": "Christian Ballouard"
+  },
+  {
+    "terme": "Médiations corporelles",
+    "definition": "supports et activités corporels utilisés comme tiers facilitant l'expression, la relation et la symbolisation.",
+    "auteur": "Christian Ballouard"
+  },
+  {
+    "terme": "Transfert primaire et secondaire",
+    "definition": "réactualisation dans la relation thérapeutique de modes relationnels précoces/archaïques (primaire) ou de liens/conflits plus élaborés (secondaire).",
+    "auteur": "Christian Ballouard"
+  },
+  {
+    "terme": "Troubles psychomoteurs (inhibition, instabilité, dyspraxie)",
+    "definition": "manifestations cliniques touchant l'organisation tonico-posturale, l'action et la régulation motrice (repli/retenue, agitation/dispersion, difficultés de coordination/planification gestuelle).",
+    "auteur": "Christian Ballouard"
+  },
+  {
+    "terme": "Corps comme lieu de l'aventure psychique",
+    "definition": "conception du corps comme espace privilégié où s'éprouvent, se jouent et se transforment les mouvements psychiques.",
+    "auteur": "Daniel Courberand"
+  },
+  {
+    "terme": "Enveloppes corporelles",
+    "definition": "limites sensori-motrices et psychiques permettant d'éprouver une unité et de contenir les angoisses.",
+    "auteur": "Daniel Courberand"
+  },
+  {
+    "terme": "Groupes thérapeutiques en psychomotricité",
+    "definition": "dispositifs collectifs favorisant la socialisation, l'étayage par les pairs et l'expérimentation corporelle partagée.",
+    "auteur": "Daniel Courberand"
+  },
+  {
+    "terme": "Clinique de l'enfant sans langage",
+    "definition": "approche adaptée aux enfants qui ne communiquent pas ou peu par la parole, s'appuyant sur le corps, le tonus et les médiations non verbales.",
+    "auteur": "Daniel Courberand"
+  },
+  {
+    "terme": "Sens de soi (sense of self",
+    "definition": "émergent, nucléaire, subjectif, verbal, narratif) : sentiment continu et évolutif d'exister et d'être un agent distinct, se complexifiant par strates au cours du développement.",
+    "auteur": "Daniel Stern"
+  },
+  {
+    "terme": "Accordage affectif (affect attunement)",
+    "definition": "comportement par lequel l'adulte reflète et partage la qualité émotionnelle/l'intensité d'un éprouvé du bébé sans simple imitation littérale.",
+    "auteur": "Daniel Stern"
+  },
+  {
+    "terme": "Enveloppe protonarrative",
+    "definition": "organisation temporelle et dynamique d'une expérience vécue (avec début, tension/point culminant, résolution) formant une matrice pré-verbale de récit.",
+    "auteur": "Daniel Stern"
+  },
+  {
+    "terme": "RIGs (représentations d'interactions généralisées)",
+    "definition": "schémas internes construits à partir de la répétition d'interactions vécues avec l'entourage, guidant les attentes relationnelles.",
+    "auteur": "Daniel Stern"
+  },
+  {
+    "terme": "Moi-peau",
+    "definition": "figuration psychique par laquelle le moi de l'enfant se représente lui-même comme un moi qui contient les contenus psychiques, à partir de l'expérience de la peau.",
+    "auteur": "Didier Anzieu"
+  },
+  {
+    "terme": "Enveloppe psychique",
+    "definition": "structure pare-excitations et contenante qui délimite l'espace psychique interne et permet les échanges avec l'environnement.",
+    "auteur": "Didier Anzieu"
+  },
+  {
+    "terme": "Fonctions du Moi-peau",
+    "definition": "ensemble des neuf fonctions analogues à celles de la peau (maintien/contenance, pare-excitation, individuation, intersensorialité, étayage sur la pulsion sexuelle, sexualisation/recharge libidinale, inscription des traces, plus l'aspect toxique si défaillant).",
+    "auteur": "Didier Anzieu"
+  },
+  {
+    "terme": "Objet transitionnel",
+    "definition": "objet matériel (comme un doudou) choisi par le bébé qui aide à passer de la relation fusionnelle/primaire à l'environnement extérieur et apaise l'angoisse de séparation.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Espace / aire transitionnelle",
+    "definition": "zone intermédiaire d'expérience (lieu du jeu, de la créativité et de la culture) située entre la réalité interne subjective et la réalité extérieure partagée.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Holding",
+    "definition": "manière dont l'environnement (et le thérapeute) porte, soutient physiquement et psychiquement le bébé et assure une continuité d'existence.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Handling",
+    "definition": "manière dont le bébé est manipulé et soigné physiquement, favorisant l'intégration psychosomatique et le sentiment d'habiter son corps.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Object presenting",
+    "definition": "présentation graduelle et adaptée de la réalité extérieure au bébé afin qu'il puisse la rencontrer sans être submergé.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Mère suffisamment bonne (good enough mother)",
+    "definition": "mère qui répond d'abord très finement aux besoins du bébé puis se désadapte progressivement au rythme de sa maturation.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "True self / false self",
+    "definition": "organisation authentique et spontanée de la personnalité (true self) par opposition à une façade défensive et soumise aux attentes extérieures (false self).",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Squiggle",
+    "definition": "jeu de gribouillage alterné entre le thérapeute et l'enfant permettant de faire émerger des pensées, émotions et fantasmes.",
+    "auteur": "Donald W. Winnicott"
+  },
+  {
+    "terme": "Débilité motrice",
+    "definition": "ensemble de particularités motrices (maladresse, syncinésies, paratonie, hypertonie) observées chez certains sujets et associées à des fragilités neuropsychiques.",
+    "auteur": "Emile Dupré"
+  },
+  {
+    "terme": "Paratonie",
+    "definition": "difficulté à relâcher volontairement ses muscles, entraînant une résistance ou une raideur lors de la mobilisation passive.",
+    "auteur": "Emile Dupré"
+  },
+  {
+    "terme": "Syncinésies",
+    "definition": "mouvements involontaires et parasites qui apparaissent dans une partie du corps lors de l'exécution d'un mouvement volontaire dans une autre partie.",
+    "auteur": "Emile Dupré"
+  },
+  {
+    "terme": "Psychomotricité (co-élaboration du concept)",
+    "definition": "notion introduite pour souligner les liens étroits entre le fonctionnement moteur, le tonus et la vie psychique.",
+    "auteur": "Emile Dupré"
+  },
+  {
+    "terme": "Motricité libre",
+    "definition": "développement moteur spontané où l'enfant découvre et maîtrise seul les postures et déplacements, sans être mis ni maintenu artificiellement dans des positions qu'il n'a pas acquises par lui-même.",
+    "auteur": "Emmi Pikler"
+  },
+  {
+    "terme": "Activité autonome",
+    "definition": "initiative propre de l'enfant qui choisit et explore ses jeux et mouvements à son rythme dans un environnement adapté.",
+    "auteur": "Emmi Pikler"
+  },
+  {
+    "terme": "Soin relationnel / soins attentifs",
+    "definition": "moments de soins (change, repas, habillage) vécus comme des temps de rencontre, d'échange et de coopération plutôt que de simple exécution technique.",
+    "auteur": "Emmi Pikler"
+  },
+  {
+    "terme": "Sécurité affective",
+    "definition": "sentiment de stabilité et de confiance issu d'une relation prévisible, respectueuse et disponible avec l'adulte.",
+    "auteur": "Emmi Pikler"
+  },
+  {
+    "terme": "Posture / gestuelle respectueuse",
+    "definition": "attitude calme, lente et attentive de l'adulte qui laisse l'enfant participer activement et préserve sa dignité.",
+    "auteur": "Emmi Pikler"
+  },
+  {
+    "terme": "Thérapie psychomotrice à médiation corporelle",
+    "definition": "prise en charge utilisant le mouvement, le jeu et le corps comme vecteurs d'expression et de transformation psychique.",
+    "auteur": "Françoise Désobeau"
+  },
+  {
+    "terme": "Corps et langage",
+    "definition": "articulation et échanges dynamiques entre les manifestations corporelles/non verbales et la mise en mots ou la symbolisation.",
+    "auteur": "Françoise Désobeau"
+  },
+  {
+    "terme": "Communication non verbale et gestuelle",
+    "definition": "transmission de messages, d'émotions et d'intentions par la posture, le regard, la mimique et le geste.",
+    "auteur": "Françoise Désobeau"
+  },
+  {
+    "terme": "Image inconsciente du corps (IIC) vs schéma corporel",
+    "definition": "l'IIC est la synthèse vivante et inconsciente de nos expériences émotionnelles et relationnelles (propre à chacun, liée au désir), tandis que le schéma corporel est la représentation neurologique/anatomique et perceptive commune à l'espèce.",
+    "auteur": "Françoise Dolto"
+  },
+  {
+    "terme": "Castration symboligène",
+    "definition": "épreuve structurante et humanisante (orale, anale, génitale, etc.) qui invite l'enfant à renoncer à une satisfaction immédiate ou fusionnelle pour accéder à plus d'autonomie et de symbolisation.",
+    "auteur": "Françoise Dolto"
+  },
+  {
+    "terme": "Complexe du homard",
+    "definition": "image illustrant le moment où l'enfant quitte une enveloppe/protection devenue trop étroite et se retrouve temporairement vulnérable avant de former une nouvelle organisation.",
+    "auteur": "Françoise Dolto"
+  },
+  {
+    "terme": "« Tout est langage »",
+    "definition": "idée que tout comportement, symptôme, geste ou silence d'un sujet a une valeur expressive et relationnelle porteur de sens.",
+    "auteur": "Françoise Dolto"
+  },
+  {
+    "terme": "Approche globale psychomotrice",
+    "definition": "lecture et accompagnement de la personne envisageant ensemble le corps, l'émotion, la cognition et la relation.",
+    "auteur": "Françoise Giromini"
+  },
+  {
+    "terme": "Clinique et théorisation de la psychomotricité",
+    "definition": "élaboration des repères théoriques et méthodologiques guidant l'observation, l'évaluation et l'intervention psychomotrices.",
+    "auteur": "Françoise Giromini"
+  },
+  {
+    "terme": "Corps et psyché",
+    "definition": "interaction constante et réciproque entre les processus corporels et les mouvements psychiques.",
+    "auteur": "Françoise Giromini"
+  },
+  {
+    "terme": "Identification adhésive",
+    "definition": "mécanisme très précoce consistant à se coller ou s'adosser à une surface, une forme ou un objet pour maintenir un sentiment d'existence et éviter l'effondrement.",
+    "auteur": "Geneviève Haag"
+  },
+  {
+    "terme": "Enveloppe / carapace corporelle",
+    "definition": "organisation défensive ou contenante du corps construite pour se protéger des angoisses d'anéantissement ou de morcellement.",
+    "auteur": "Geneviève Haag"
+  },
+  {
+    "terme": "Filiation / structuration de l'image du corps",
+    "definition": "construction progressive du sentiment d'unité, d'axe et d'appartenance familiale et symbolique.",
+    "auteur": "Geneviève Haag"
+  },
+  {
+    "terme": "Retour sur soi",
+    "definition": "mouvement d'intériorisation et de rassemblement des perceptions qui permet au sujet de se sentir unifié et présent à lui-même.",
+    "auteur": "Geneviève Haag"
+  },
+  {
+    "terme": "Équilibre / axe corporel",
+    "definition": "verticalité et centralité corporelles associées au sentiment d'identité et de sécurité interne.",
+    "auteur": "Geneviève Haag"
+  },
+  {
+    "terme": "Système moteur émotionnel (Emotional Motor System - EMS) vs système moteur somatique",
+    "definition": "l'EMS régule les postures, comportements et réponses physiologiques liées aux émotions et à la survie (défense, reproduction, vocalisation), distinct du système somatique orienté vers les mouvements volontaires et précis.",
+    "auteur": "Gert Holstege"
+  },
+  {
+    "terme": "Substance grise périaqueducale (PAG)",
+    "definition": "structure clé du tronc cérébral intégrant les signaux émotionnels et coordonnant des réponses motrices et autonomes adaptatives.",
+    "auteur": "Gert Holstege"
+  },
+  {
+    "terme": "Noyau rétroambigu (nucleus retroambiguus)",
+    "definition": "structure bulbaire recevant des projections de la PAG et relayant des commandes vers les motoneurones impliqués dans la respiration, la vocalisation et la posture.",
+    "auteur": "Gert Holstege"
+  },
+  {
+    "terme": "Éducation psychomotrice",
+    "definition": "démarche éducative et préventive visant à harmoniser le développement moteur, perceptif, cognitif et affectif de l'enfant.",
+    "auteur": "Giselle Soubiran"
+  },
+  {
+    "terme": "Relaxation psychomotrice",
+    "definition": "technique de détente corporelle et de régulation tonique favorisant la conscience du corps et l'apaisement psychique.",
+    "auteur": "Giselle Soubiran"
+  },
+  {
+    "terme": "Schéma corporel",
+    "definition": "conscience et connaissance de son corps, de ses segments, de sa posture et de ses limites dans l'espace.",
+    "auteur": "Giselle Soubiran"
+  },
+  {
+    "terme": "Structuration spatio-temporelle",
+    "definition": "organisation progressive des repères d'espace (orientation, latéralité, distances) et de temps (rythme, succession, durée).",
+    "auteur": "Giselle Soubiran"
+  },
+  {
+    "terme": "Dialogue tonique",
+    "definition": "échange premier, non verbal et émotionnel entre l'enfant et son entourage à travers les variations de tonus musculaire et d'attitude.",
+    "auteur": "Henri Wallon"
+  },
+  {
+    "terme": "Émotion comme fonction sociale et motrice",
+    "definition": "rôle fondamental de l'émotion qui relie l'organisme au milieu humain et s'exprime d'abord par des réactions toniques et posturales.",
+    "auteur": "Henri Wallon"
+  },
+  {
+    "terme": "Stades du développement psychomoteur",
+    "definition": "succession d'étapes marquées par des crises et des réorganisations entre le biologique, l'affectif, le moteur et le cognitif.",
+    "auteur": "Henri Wallon"
+  },
+  {
+    "terme": "Alternance fonctionnelle / prévalence motrice puis affective",
+    "definition": "succession dynamique dans le développement où prédominent tour à tour l'orientation vers l'action/le monde extérieur et l'orientation vers l'affectivité/l'intériorité.",
+    "auteur": "Henri Wallon"
+  },
+  {
+    "terme": "Psychosémiotique",
+    "definition": "approche croisant la psychomotricité et la sémiotique pour analyser la production de sens dans les conduites corporelles et relationnelles.",
+    "auteur": "Ivan Darrault"
+  },
+  {
+    "terme": "Approche sémiotique de la thérapie psychomotrice",
+    "definition": "lecture des gestes, postures, rythmes et interactions comme des systèmes de signes porteurs de significations.",
+    "auteur": "Ivan Darrault"
+  },
+  {
+    "terme": "Corps signifiant",
+    "definition": "corps envisagé comme un espace d'expression et de signification où s'inscrivent des récits et des intentions.",
+    "auteur": "Ivan Darrault"
+  },
+  {
+    "terme": "Narrativité corporelle",
+    "definition": "organisation dynamique et temporelle des actions et mouvements du sujet formant une trame expressive.",
+    "auteur": "Ivan Darrault"
+  },
+  {
+    "terme": "Technique / système technicien",
+    "definition": "ensemble des moyens rationnellement et efficacement organisés dans chaque domaine d'activité, formant un système global interconnecté.",
+    "auteur": "Jacques Ellul"
+  },
+  {
+    "terme": "Autonomie de la technique",
+    "definition": "tendance de la technique à évoluer selon sa propre logique et ses propres normes, échappant partiellement au contrôle moral ou politique.",
+    "auteur": "Jacques Ellul"
+  },
+  {
+    "terme": "Société de consommation / propagande",
+    "definition": "organisation sociale marquée par la consommation de masse et l'usage systématique de la propagande pour orienter les opinions et comportements.",
+    "auteur": "Jacques Ellul"
+  },
+  {
+    "terme": "Commande motrice",
+    "definition": "processus neurophysiologique par lequel le système nerveux central élabore, déclenche et ajuste l'exécution d'un mouvement.",
+    "auteur": "Jacques Paillard"
+  },
+  {
+    "terme": "Perception et action",
+    "definition": "boucle interactive permanente où l'action transforme les perceptions et où la perception guide et corrige l'action.",
+    "auteur": "Jacques Paillard"
+  },
+  {
+    "terme": "Régulation sensorimotrice",
+    "definition": "ajustement continu du mouvement à partir des informations sensorielles entrantes et des prédictions motrices.",
+    "auteur": "Jacques Paillard"
+  },
+  {
+    "terme": "Proprioception et extéroception",
+    "definition": "recueil des informations issues de l'intérieur du corps (muscles, articulations, position) et de l'environnement externe (vue, toucher, audition).",
+    "auteur": "Jacques Paillard"
+  },
+  {
+    "terme": "Respect de l'enfant comme personne à part entière",
+    "definition": "reconnaissance de l'enfant comme un être humain actuel et complet, digne de considération, et non comme un simple être en devenir.",
+    "auteur": "Janusz Korczak"
+  },
+  {
+    "terme": "Droit de l'enfant",
+    "definition": "affirmation des droits fondamentaux de l'enfant, notamment le droit d'être respecté, d'être entendu et de vivre dans un cadre digne.",
+    "auteur": "Janusz Korczak"
+  },
+  {
+    "terme": "Autonomie et citoyenneté enfantine",
+    "definition": "participation active des enfants à la vie collective et à l'élaboration des règles communes (notamment par des institutions comme le tribunal ou le parlement des enfants).",
+    "auteur": "Janusz Korczak"
+  },
+  {
+    "terme": "Photogénie",
+    "definition": "qualité propre à l'image cinématographique qui révèle et amplifie la valeur expressive et émotionnelle d'un être ou d'un objet par le mouvement et le cadrage.",
+    "auteur": "Jean Epstein"
+  },
+  {
+    "terme": "Cinéphilie / mouvement cinématographique",
+    "definition": "passion et réflexion sur le cinéma comme art du mouvement, du rythme et de la perception renouvelée du réel.",
+    "auteur": "Jean Epstein"
+  },
+  {
+    "terme": "Conscience machine / intelligence du cinéma",
+    "definition": "capacité du dispositif cinématographique à produire une perception non humaine, mobile et révélatrice du monde.",
+    "auteur": "Jean Epstein"
+  },
+  {
+    "terme": "Assimilation",
+    "definition": "intégration de nouvelles informations ou expériences dans des structures ou schèmes déjà existants.",
+    "auteur": "Jean Piaget"
+  },
+  {
+    "terme": "Accommodation",
+    "definition": "modification des schèmes existants pour s'adapter à une situation ou un objet nouveau qui résiste à l'assimilation.",
+    "auteur": "Jean Piaget"
+  },
+  {
+    "terme": "Équilibration",
+    "definition": "processus d'autorégulation par lequel l'individu cherche un équilibre dynamique entre assimilation et accommodation.",
+    "auteur": "Jean Piaget"
+  },
+  {
+    "terme": "Schèmes",
+    "definition": "structures organisées d'actions ou de pensées (sensorimotrices puis opératoires) transférables et généralisables à des situations analogues.",
+    "auteur": "Jean Piaget"
+  },
+  {
+    "terme": "Stades du développement cognitif",
+    "definition": "étapes successives de construction de l'intelligence (sensorimoteur, préopératoire, opératoire concret, formel).",
+    "auteur": "Jean Piaget"
+  },
+  {
+    "terme": "Permanence de l'objet",
+    "definition": "compréhension que l'objet continue d'exister même lorsqu'il échappe temporairement à la perception directe.",
+    "auteur": "Jean Piaget"
+  },
+  {
+    "terme": "Psychomotricité et lien social",
+    "definition": "rôle de l'approche psychomotrice dans le maintien, la restauration et l'enrichissement des liens relationnels et sociaux.",
+    "auteur": "Jean-Pierre Yernaux"
+  },
+  {
+    "terme": "Identité professionnelle du psychomotricien",
+    "definition": "repères déontologiques, cliniques et corporels définissant la spécificité du métier de psychomotricien.",
+    "auteur": "Jean-Pierre Yernaux"
+  },
+  {
+    "terme": "Approche relationnelle et corporelle",
+    "definition": "pratique fondée sur la rencontre, l'engagement corporel et l'ajustement mutuel.",
+    "auteur": "Jean-Pierre Yernaux"
+  },
+  {
+    "terme": "Théorie de l'attachement",
+    "definition": "théorie selon laquelle le nourrisson possède une disposition biologique innée à rechercher la proximité d'un adulte protecteur pour assurer sa survie et sa sécurité.",
+    "auteur": "John Bowlby"
+  },
+  {
+    "terme": "Figures d'attachement",
+    "definition": "personnes privilégiées vers lesquelles l'enfant se tourne en situation de détresse, de fatigue ou d'insécurité.",
+    "auteur": "John Bowlby"
+  },
+  {
+    "terme": "Base de sécurité (secure base)",
+    "definition": "figure d'attachement fiable à partir de laquelle l'enfant peut explorer le monde et vers laquelle il peut revenir pour être rassuré.",
+    "auteur": "John Bowlby"
+  },
+  {
+    "terme": "Modèle interne opérant (MIO)",
+    "definition": "représentation mentale inconsciente de soi, des autres et des relations construite à partir des expériences d'attachement.",
+    "auteur": "John Bowlby"
+  },
+  {
+    "terme": "Protestation / détresse / détachement",
+    "definition": "phases réactionnelles observées chez le jeune enfant face à une séparation prolongée ou une rupture du lien d'attachement.",
+    "auteur": "John Bowlby"
+  },
+  {
+    "terme": "Dialogue tonique (approfondissement clinique)",
+    "definition": "élaboration clinique de l'échange tonico-postural et affectif entre le sujet et l'autre, au cœur de la relation et de la relaxation.",
+    "auteur": "Julian de Ajuriaguerra"
+  },
+  {
+    "terme": "Syndromes psychomoteurs",
+    "definition": "ensembles organisés de troubles toniques, moteurs et relationnels (ex. : instabilité, inhibition, maladresse, tics).",
+    "auteur": "Julian de Ajuriaguerra"
+  },
+  {
+    "terme": "Organisation psychomotrice",
+    "definition": "agencement dynamique du tonus, de la posture, du geste, de l'espace et du temps en lien avec la vie psychique.",
+    "auteur": "Julian de Ajuriaguerra"
+  },
+  {
+    "terme": "Relaxation thérapeutique",
+    "definition": "méthode de travail corporel et tonique visant la réorganisation de l'expérience corporelle et l'apaisement des tensions.",
+    "auteur": "Julian de Ajuriaguerra"
+  },
+  {
+    "terme": "Approche Snoezelen (sensorialité, sécurisation, « être » plutôt que « faire »)",
+    "definition": "démarche d'accompagnement multisensoriel visant l'apaisement, le bien-être et la relation dans une atmosphère sécurisante et non performative.",
+    "auteur": "Marc Thiry"
+  },
+  {
+    "terme": "Haptonomie / contact affectif",
+    "definition": "approche centrée sur le toucher affectif, sécurisant et confirmant qui soutient l'autre dans son être.",
+    "auteur": "Marc Thiry"
+  },
+  {
+    "terme": "Communication sensorielle",
+    "definition": "échange fondé sur les perceptions sensorielles et la qualité du contact lorsque le langage verbal est limité ou difficile.",
+    "auteur": "Marc Thiry"
+  },
+  {
+    "terme": "Espaces / zones d'illusion",
+    "definition": "lieux psychiques intermédiaires où l'imagination, la rêverie et la création peuvent se déployer librement.",
+    "auteur": "Marion Milner"
+  },
+  {
+    "terme": "Créativité et activité picturale",
+    "definition": "rôle du dessin et de la création artistique dans l'exploration de soi et l'émergence de formes nouvelles.",
+    "auteur": "Marion Milner"
+  },
+  {
+    "terme": "Pliable medium (médium malléable)",
+    "definition": "matériau souple et réceptif qui se laisse modeler et transformer sans opposer une résistance rigide ou destructrice.",
+    "auteur": "Marion Milner"
+  },
+  {
+    "terme": "Concentration / attention non dirigée",
+    "definition": "mode d'attention ouverte, réceptive et non forcée permettant l'émergence d'idées ou d'éprouvés implicites.",
+    "auteur": "Marion Milner"
+  },
+  {
+    "terme": "Flow (état d'absorption / expérience optimale)",
+    "definition": "état de concentration intense, d'engagement total et de plaisir éprouvé dans une activité qui capte pleinement l'attention.",
+    "auteur": "Mihály Csíkszentmihályi"
+  },
+  {
+    "terme": "Équilibre défi-compétence",
+    "definition": "ajustement entre le niveau de difficulté de la tâche et les capacités de la personne, favorisant l'émergence du flow (ni ennui, ni anxiété).",
+    "auteur": "Mihály Csíkszentmihályi"
+  },
+  {
+    "terme": "Motivation intrinsèque",
+    "definition": "engagement dans une activité pour la satisfaction, l'intérêt ou l'expérience qu'elle procure en elle-même.",
+    "auteur": "Mihály Csíkszentmihályi"
+  },
+  {
+    "terme": "Identité narrative",
+    "definition": "identité d'une personne qui se construit et se comprend à travers les récits qu'elle fait de sa vie et de ses actions.",
+    "auteur": "Paul Ricoeur"
+  },
+  {
+    "terme": "Herméneutique",
+    "definition": "art et théorie de l'interprétation visant à comprendre le sens des textes, des symboles et des actions humaines.",
+    "auteur": "Paul Ricoeur"
+  },
+  {
+    "terme": "Soi-même comme un autre",
+    "definition": "conception de l'identité articulant la permanence de soi dans le temps et l'altérité relationnelle et éthique.",
+    "auteur": "Paul Ricoeur"
+  },
+  {
+    "terme": "Interprétation et reconnaissance",
+    "definition": "démarche de compréhension médiatisée par les signes et les récits, associée à la quête de reconnaissance mutuelle.",
+    "auteur": "Paul Ricoeur"
+  },
+  {
+    "terme": "Psychothérapie institutionnelle",
+    "definition": "approche soignante qui travaille l'institution elle-même (vie quotidienne, espaces, réunions, collectifs) comme outil thérapeutique.",
+    "auteur": "Pierre Delion"
+  },
+  {
+    "terme": "Fonction phorique (porter, soutenir, transporter)",
+    "definition": "fonction de portage physique, psychique et symbolique exercée par l'équipe et l'environnement auprès de personnes en difficulté.",
+    "auteur": "Pierre Delion"
+  },
+  {
+    "terme": "Holding institutionnel",
+    "definition": "capacité de l'équipe et du cadre institutionnel à contenir, soutenir et maintenir une continuité de soins face aux angoisses.",
+    "auteur": "Pierre Delion"
+  },
+  {
+    "terme": "Accueil de la psychose / de l'autisme",
+    "definition": "démarche clinique et institutionnelle attentive au rythme, aux particularités sensorielles et à l'altérité des personnes concernées.",
+    "auteur": "Pierre Delion"
+  },
+  {
+    "terme": "Dualisme corps-esprit (res cogitans / res extensa)",
+    "definition": "distinction philosophique entre la substance pensante immatérielle (res cogitans) et la substance corporelle étendue dans l'espace (res extensa).",
+    "auteur": "René Descartes"
+  },
+  {
+    "terme": "Glande pinéale",
+    "definition": "structure cérébrale que Descartes considérait comme le point de rencontre particulier entre l'âme et le corps.",
+    "auteur": "René Descartes"
+  },
+  {
+    "terme": "Mécanisme corporel",
+    "definition": "conception du corps humain (et animal) fonctionnant selon des lois physiques et mécaniques semblables à celles d'une machine.",
+    "auteur": "René Descartes"
+  },
+  {
+    "terme": "Doute méthodique",
+    "definition": "démarche consistant à suspendre provisoirement tout ce qui peut être mis en doute afin de rechercher une vérité certaine et indubitable.",
+    "auteur": "René Descartes"
+  },
+  {
+    "terme": "Médium malléable",
+    "definition": "objet ou matériau (et fonction de l'environnement/du thérapeute) qui est indéfiniment transformable, sensible, indestructible, disponible et inconditionnel pour soutenir la symbolisation.",
+    "auteur": "René Roussillon"
+  },
+  {
+    "terme": "Symbolisation primaire et secondaire",
+    "definition": "la symbolisation primaire transforme les éprouvés bruts/archaïques en représentations-choses ou traces figurables ; la symbolisation secondaire les articule dans des chaînes représentatives et verbales.",
+    "auteur": "René Roussillon"
+  },
+  {
+    "terme": "Clivage et retour du clivé",
+    "definition": "mécanisme par lequel des parties de la vie psychique ou d'une expérience sont séparées et tenues à distance, tout en tendant à réapparaître sous d'autres formes.",
+    "auteur": "René Roussillon"
+  },
+  {
+    "terme": "Associativité et jeu",
+    "definition": "libre circulation des représentations et des mises en jeu permettant d'explorer et d'élaborer les mouvements psychiques.",
+    "auteur": "René Roussillon"
+  },
+  {
+    "terme": "Objet trouvé-créé",
+    "definition": "expérience où l'objet rencontré dans la réalité externe correspond suffisamment à l'attente interne pour être à la fois découvert et subjectivement créé.",
+    "auteur": "René Roussillon"
+  },
+  {
+    "terme": "Hospitalisme",
+    "definition": "ensemble de troubles graves (développementaux, affectifs, somatiques et relationnels) observés chez des nourrissons placés en institution avec carence affective et relationnelle.",
+    "auteur": "René Spitz"
+  },
+  {
+    "terme": "Dépression anaclitique",
+    "definition": "tableau dépressif survenant chez un bébé après la perte brusque d'une relation affective satisfaisante et d'un objet d'attachement privilégié.",
+    "auteur": "René Spitz"
+  },
+  {
+    "terme": "Organisateurs de la psyché (sourire social, angoisse du 8e mois, le « non »)",
+    "definition": "jalons développementaux marqués par des réactions spécifiques qui signalent une réorganisation profonde de la vie psychique et relationnelle.",
+    "auteur": "René Spitz"
+  },
+  {
+    "terme": "Relation d'objet",
+    "definition": "modalité d'investissement affectif et relationnel d'un sujet envers l'autre (l'« objet » au sens psychanalytique).",
+    "auteur": "René Spitz"
+  },
+  {
+    "terme": "Laban Movement Analysis (LMA)",
+    "definition": "système d'observation, de description et d'analyse du mouvement humain (corps, effort, espace, forme).",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Facteurs du mouvement (flux, espace, poids, temps)",
+    "definition": "dimensions qualitatives de l'effort dansant/mouvement :",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Flux (flow)",
+    "definition": "continuité et contrôle du mouvement (libre/fluide vs retenu/contrôlé).",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Espace",
+    "definition": "orientation et trajectoire du mouvement (direct/linéaire vs indirect/souple/multidirectionnel).",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Poids",
+    "definition": "rapport à la gravité et dosage de la force/intention (ferme/fort vs léger/délicat).",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Temps",
+    "definition": "rapidité et urgence ou étirement du mouvement (soudain/rapide vs soutenu/progressif).",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Kinésphère",
+    "definition": "sphère d'espace personnelle entourant le corps et accessible par l'extension des membres sans déplacement du lieu d'ancrage.",
+    "auteur": "Rudolf Laban"
+  },
+  {
+    "terme": "Approche relationnelle et corporelle / accompagnement psychocorporel",
+    "definition": "démarche d'accompagnement attentive à la relation, au ressenti corporel et aux processus émotionnels de la personne.",
+    "auteur": "Sandrine Perrière"
+  },
+  {
+    "terme": "Inconscient",
+    "definition": "instance et lieu psychique regroupant des contenus refoulés ou non conscients (représentations, affects, désirs) qui agissent sur la vie psychique et les comportements.",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Ça / moi / surmoi",
+    "definition": "trois instances de la seconde topique : le ça (pôle pulsionnel et inconscient), le moi (instance de médiation avec la réalité, le ça et le surmoi) et le surmoi (intériorisation des interdits, exigences morales et idéaux).",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Pulsions (Éros / Thanatos, pulsion de vie / de mort)",
+    "definition": "poussées dynamiques à la frontière du somatique et du psychique, orientées vers la liaison et la préservation de la vie (Éros) ou vers la déliaison, la réduction des tensions et la destruction (Thanatos).",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Refoulement",
+    "definition": "mécanisme de défense par lequel des représentations ou souvenirs liés à une pulsion sont maintenus dans l'inconscient lorsque leur accès à la conscience engendrerait du déplaisir ou de l'angoisse.",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Transfert",
+    "definition": "déplacement sur la personne du thérapeute de sentiments, désirs, attentes et conflits inconscients issus de relations antérieures.",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Mécanismes de défense",
+    "definition": "opérations psychiques (souvent inconscientes) mises en jeu par le moi pour réduire l'angoisse et protéger l'équilibre psychique.",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Œdipe",
+    "definition": "complexe organisateur du psychisme marqué par l'attirance ambivalente envers le parent de sexe opposé et la rivalité/identification avec le parent de même sexe.",
+    "auteur": "Sigmund Freud"
+  },
+  {
+    "terme": "Santé culturelle",
+    "definition": "dimension culturelle et symbolique du bien-être et de la santé psychique, incluant l'accès aux arts, aux contes, aux berceuses et aux rites partagés.",
+    "auteur": "Sophie Marinopoulos"
+  },
+  {
+    "terme": "Parentalité / naissance d'un parent",
+    "definition": "processus de transformation psychique, identitaire et relationnel vécu par les adultes à l'arrivée d'un enfant.",
+    "auteur": "Sophie Marinopoulos"
+  },
+  {
+    "terme": "Jeu libre et créativité de l'enfant",
+    "definition": "espace spontané d'exploration et de création permettant à l'enfant d'éprouver sa liberté et de symboliser.",
+    "auteur": "Sophie Marinopoulos"
+  },
+  {
+    "terme": "Berceuse / espace transitionnel et accueil familial",
+    "definition": "supports d'apaisement, de lien et d'accueil favorisant la sécurité et la rencontre entre l'enfant et ses proches.",
+    "auteur": "Sophie Marinopoulos"
+  },
+  {
+    "terme": "Théorie polyvagale (TPV)",
+    "definition": "modèle neurophysiologique décrivant comment le système nerveux autonome hiérarchise les réponses de sécurité, de mobilisation et d'immobilisation selon le contexte.",
+    "auteur": "Stephen Porges"
+  },
+  {
+    "terme": "Système vague ventral (engagement social)",
+    "definition": "voie parasympathique favorisant le calme, la régulation, la communication faciale/vocale et la relation sociale sécurisée.",
+    "auteur": "Stephen Porges"
+  },
+  {
+    "terme": "Système sympathique (combat/fuite)",
+    "definition": "voie de mobilisation énergétique préparant l'organisme à l'action, à la défense ou à la fuite face à une menace.",
+    "auteur": "Stephen Porges"
+  },
+  {
+    "terme": "Vague dorsal (figement/immobilisation)",
+    "definition": "voie parasympathique plus archaïque associée au ralentissement, à l'économie d'énergie, au repli ou à la sidération/dissociation face à un danger extrême.",
+    "auteur": "Stephen Porges"
+  },
+  {
+    "terme": "Neuroception",
+    "definition": "détection inconsciente et automatique par le système nerveux des indices de sécurité, de danger ou de menace de mort dans l'environnement et les relations.",
+    "auteur": "Stephen Porges"
+  },
+  {
+    "terme": "Intégration motrice primordiale (IMP)",
+    "definition": "processus de maturation et d'intégration des réflexes, schèmes et coordinations motrices précoces qui soutient le développement psychique et cognitif.",
+    "auteur": "Suzanne Robert-Ouvray"
+  },
+  {
+    "terme": "Dialogues tonico-émotionnels précoces",
+    "definition": "échanges corporels et toniques très précoces entre le bébé et l'adulte véhiculant sécurité, émotions et repères.",
+    "auteur": "Suzanne Robert-Ouvray"
+  },
+  {
+    "terme": "Hypertonie / hypotonie",
+    "definition": "variations du tonus musculaire caractérisées respectivement par un excès de tension/résistance musculaire (hypertonie) ou par un tonus diminué/relâché (hypotonie).",
+    "auteur": "Suzanne Robert-Ouvray"
+  },
+  {
+    "terme": "Étapes du développement psychomoteur",
+    "definition": "séquences d'évolution posturale, motrice et sensorielle jalonnant la construction du bébé et de l'enfant.",
+    "auteur": "Suzanne Robert-Ouvray"
+  },
+  {
+    "terme": "Éducation psychomotrice",
+    "definition": "approche éducative utilisant le mouvement, le jeu et l'espace pour accompagner le développement global de l'enfant.",
+    "auteur": "Sylvie Donnet"
+  },
+  {
+    "terme": "Découpage ternaire de l'espace (plaisir sensori-moteur, plaisir symbolique, pensée opératoire / création)",
+    "definition": "organisation de l'espace d'activité en trois registres progressifs permettant le passage du jeu sensori-moteur au symbolisme puis à l'activité plus structurée/créative.",
+    "auteur": "Sylvie Donnet"
+  },
+  {
+    "terme": "Décentration",
+    "definition": "capacité à dépasser le point de vue ou l'impulsion immédiate pour adopter d'autres perspectives ou modalités d'action.",
+    "auteur": "Sylvie Donnet"
+  },
+  {
+    "terme": "Thérapie par le jeu centrée sur l'enfant (Non-directive Play Therapy)",
+    "definition": "approche thérapeutique où l'enfant dirige librement son jeu dans un cadre sécurisant tandis que le thérapeute l'accompagne sans diriger ni forcer.",
+    "auteur": "Virginie Axaline"
+  },
+  {
+    "terme": "Huit principes de la relation thérapeutique par le jeu",
+    "definition": "règles d'attitude du thérapeute (chaleur, acceptation, permissivité, reconnaissance des sentiments, respect de l'autonomie de l'enfant, non-directivité, progressivité, limites réalistes).",
+    "auteur": "Virginie Axaline"
+  },
+  {
+    "terme": "Acceptation inconditionnelle",
+    "definition": "accueil de l'enfant et de ses émotions sans jugement ni critique, tout en posant des limites claires et nécessaires à la sécurité.",
+    "auteur": "Virginie Axaline"
+  },
+  {
+    "terme": "Corrélat cérébral des maladies mentales (« les maladies mentales sont des maladies du cerveau »)",
+    "definition": "thèse psychiatrique affirmant que les troubles mentaux s'enracinent dans des processus neurobiologiques et cérébraux.",
+    "auteur": "Wilhelm Griesinger"
+  },
+  {
+    "terme": "Unité des psychoses",
+    "definition": "conception selon laquelle les différentes formes de psychoses représentent des degrés ou manifestations variées d'un même processus pathologique fondamental.",
+    "auteur": "Wilhelm Griesinger"
+  }
+];
+
+        // Initialisation des compteurs et filtres
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('count-vocab-tab').textContent = VOCAB_DATA.length;
+            document.getElementById('count-theories-tab').textContent = THEORIES_DATA.length;
+            document.getElementById('stats-badge').textContent = `${THEORIES_DATA.length} fiches auteurs • ${VOCAB_DATA.length} concepts définis`;
+
+            // Remplir les menus déroulants d'auteurs uniques
+            const uniqueAuthors = [...new Set(THEORIES_DATA.map(item => item.auteur))].sort((a, b) => a.localeCompare(b, 'fr'));
+            const vocabAuthorSelect = document.getElementById('filterVocabAuthor');
+            const theoryAuthorSelect = document.getElementById('filterTheoryAuthor');
+
+            uniqueAuthors.forEach(author => {
+                const opt1 = document.createElement('option');
+                opt1.value = author;
+                opt1.textContent = author;
+                vocabAuthorSelect.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = author;
+                opt2.textContent = author;
+                theoryAuthorSelect.appendChild(opt2);
+            });
+
+            // Trier le vocabulaire par ordre alphabétique
+            VOCAB_DATA.sort((a, b) => a.terme.localeCompare(b.terme, 'fr'));
+
+            renderVocab();
+            renderTheories();
+        });
+
+        // Navigation entre les onglets
+        function switchTab(tabId) {
+            const tabs = ['tab-definition', 'tab-vocab', 'tab-theories'];
+            tabs.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+                const btn = document.getElementById('btn-' + id.replace('tab-', ''));
+                btn.classList.remove('tab-active');
+                btn.classList.add('tab-inactive');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
+            activeBtn.classList.remove('tab-inactive');
+            activeBtn.classList.add('tab-active');
+        }
+
+        // Échapper le HTML pour éviter tout problème d'affichage
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Affichage et filtrage de l'onglet Vocabulaire
+        function renderVocab() {
+            const query = document.getElementById('searchVocab').value.toLowerCase().trim();
+            const selectedAuthor = document.getElementById('filterVocabAuthor').value;
+            const container = document.getElementById('vocabList');
+            const info = document.getElementById('vocab-results-info');
+
+            const filtered = VOCAB_DATA.filter(item => {
+                const matchesAuthor = !selectedAuthor || item.auteur === selectedAuthor;
+                const matchesQuery = !query ||
+                    item.terme.toLowerCase().includes(query) ||
+                    item.definition.toLowerCase().includes(query) ||
+                    item.auteur.toLowerCase().includes(query);
+                return matchesAuthor && matchesQuery;
+            });
+
+            info.textContent = `${filtered.length} concept(s) affiché(s) sur ${VOCAB_DATA.length}`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-2 bg-white p-8 rounded-xl border border-slate-200 text-center text-slate-500">Aucun terme ne correspond à votre recherche.</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => `
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-teal-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-teal-800 text-base">${escapeHtml(item.terme)}</h3>
+                        </div>
+                        <p class="text-sm text-slate-700 mt-2 leading-relaxed">${escapeHtml(item.definition)}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-medium text-slate-500">Auteur : <strong class="text-slate-700">${escapeHtml(item.auteur)}</strong></span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Affichage et filtrage de l'onglet Théories & Auteurs
+        function renderTheories() {
+            const query = document.getElementById('searchTheory').value.toLowerCase().trim();
+            const selectedAuthor = document.getElementById('filterTheoryAuthor').value;
+            const container = document.getElementById('theoryList');
+            const info = document.getElementById('theory-results-info');
+
+            const filtered = THEORIES_DATA.filter(item => {
+                const matchesAuthor = !selectedAuthor || item.auteur === selectedAuthor;
+                if (!matchesAuthor) return false;
+                if (!query) return true;
+
+                const inAuteur = item.auteur.toLowerCase().includes(query);
+                const inProf = item.profession.toLowerCase().includes(query);
+                const inTermes = item.termes_cles.toLowerCase().includes(query);
+                const inConcepts = item.concepts.some(c =>
+                    c.terme.toLowerCase().includes(query) || c.definition.toLowerCase().includes(query)
+                );
+                const inRefs = item.references.some(r => r.toLowerCase().includes(query));
+
+                return inAuteur || inProf || inTermes || inConcepts || inRefs;
+            });
+
+            info.textContent = `${filtered.length} fiche(s) théorique(s) affichée(s) sur ${THEORIES_DATA.length}`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="bg-white p-8 rounded-xl border border-slate-200 text-center text-slate-500">Aucune théorie ou auteur ne correspond à votre recherche.</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => `
+                <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-teal-300 transition">
+                    <!-- En-tête de la fiche : Auteur & Profession -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 pb-3 border-b border-slate-100">
+                        <div>
+                            <h3 class="text-xl font-bold text-teal-800">${escapeHtml(item.auteur)}</h3>
+                            <p class="text-xs font-medium text-slate-500 mt-0.5">${escapeHtml(item.profession)}</p>
+                        </div>
+                        <span class="text-xs font-semibold bg-teal-50 text-teal-700 px-3 py-1 rounded-full border border-teal-100">
+                            Fiche #${item.id}
+                        </span>
+                    </div>
+
+                    <!-- Mots-clés / Concepts principaux -->
+                    <div class="mt-3 bg-slate-50 px-3.5 py-2.5 rounded-lg border border-slate-100">
+                        <p class="text-xs text-slate-600">
+                            <span class="font-semibold text-slate-800">Concepts clés :</span> ${escapeHtml(item.termes_cles)}
+                        </p>
+                    </div>
+
+                    <!-- Résumé complet des concepts et définitions -->
+                    <div class="mt-4 space-y-2.5">
+                        <h4 class="text-sm font-bold text-slate-900">Développements théoriques & définitions :</h4>
+                        <ul class="space-y-2 text-sm text-slate-700">
+                            ${item.concepts.map(c => `
+                                <li class="pl-3 border-l-2 border-teal-500 leading-relaxed">
+                                    ${c.definition
+                                        ? `<strong class="text-slate-900">${escapeHtml(c.terme)} :</strong> ${escapeHtml(c.definition)}`
+                                        : `<strong class="text-slate-900">${escapeHtml(c.terme)}</strong>`
+                                    }
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <!-- Références bibliographiques -->
+                    ${item.references.length > 0 ? `
+                        <div class="mt-4 pt-3 border-t border-slate-100">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Références théoriques</h4>
+                            <ul class="list-disc list-inside text-xs text-slate-600 space-y-1">
+                                ${item.references.map(ref => `<li>${escapeHtml(ref)}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                </article>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
