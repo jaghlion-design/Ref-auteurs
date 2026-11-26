@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gestion locale des auteurs, termes et références du référentiel de psychomotricité.">
+  <title>Gérer le référentiel — Psychomotricité</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <header class="bg-teal-700 px-5 py-6 text-white">
+    <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3">
+      <div><h1 class="text-2xl font-bold">Gérer le référentiel</h1><p class="mt-1 text-sm text-teal-100">Auteurs, termes et références bibliographiques</p></div>
+      <a class="rounded-lg border border-teal-500 px-4 py-2 text-sm hover:bg-teal-800" href="./">← Retour au référentiel</a>
+    </div>
+  </header>
+  <main class="mx-auto max-w-5xl space-y-6 p-5 md:p-8">
+    <section class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+      <strong>À savoir :</strong> les changements sont enregistrés dans le navigateur et sur cet appareil uniquement. Ils ne modifient pas automatiquement le site public et ne sont pas partagés entre appareils. Utilisez l’export JSON pour sauvegarder ou transférer vos données.
+    </section>
+    <section class="flex flex-wrap gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <button id="export" class="rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800">Exporter une sauvegarde JSON</button>
+      <label class="cursor-pointer rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-50">Importer une sauvegarde JSON<input id="import" type="file" accept="application/json,.json" class="sr-only"></label>
+      <button id="clear" class="ml-auto rounded-lg border border-red-300 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Effacer les données locales</button>
+      <p id="status" class="w-full text-sm text-slate-500" role="status" aria-live="polite"></p>
+    </section>
+    <section class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 class="mb-1 text-xl font-bold">Ajouter un auteur</h2><p class="mb-4 text-sm text-slate-500">Les termes et références peuvent être ajoutés ou modifiés séparément sur chaque fiche.</p>
+      <form id="author-form" class="grid gap-3 md:grid-cols-2">
+        <label class="text-sm font-medium">Nom de l’auteur *<input name="name" required maxlength="160" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal" placeholder="Ex. Françoise Dolto"></label>
+        <label class="text-sm font-medium">Profession<input name="profession" maxlength="240" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal" placeholder="Ex. Psychanalyste et pédiatre"></label>
+        <button class="w-fit rounded-lg bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800 md:col-span-2">Ajouter l’auteur</button>
+      </form>
+    </section>
+    <section>
+      <div class="mb-4 flex flex-wrap items-end justify-between gap-3"><div><h2 class="text-xl font-bold">Fiches enregistrées</h2><p class="text-sm text-slate-500">Modifiez une fiche, ou gérez ses termes et références ci-dessous.</p></div><input id="search" type="search" placeholder="Rechercher un auteur, un terme…" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm md:w-72" aria-label="Rechercher dans les fiches"></div>
+      <div id="records" class="space-y-4"></div>
+    </section>
+  </main>
+<script>
+(() => {
+  'use strict';
+  const KEY = 'ref-auteurs-manager-v1';
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const status = $('#status');
+  let records = load();
+  function load() {
+    try {
+      const value = JSON.parse(localStorage.getItem(KEY) || '[]');
+      if (!Array.isArray(value)) return [];
+      return value.filter(item => item && typeof item.id === 'string').map(item => ({
+        id: item.id, name: String(item.name || ''), profession: String(item.profession || ''),
+        terms: Array.isArray(item.terms) ? item.terms.filter(x => x && typeof x === 'object').map(x => ({ name: String(x.name || ''), definition: String(x.definition || '') })) : [],
+        references: Array.isArray(item.references) ? item.references.map(String) : []
+      }));
+    } catch { return []; }
+  }
+  function save(message = 'Modifications enregistrées sur cet appareil.') {
+    try { localStorage.setItem(KEY, JSON.stringify(records)); status.textContent = message; render(); }
+    catch { status.textContent = 'Enregistrement impossible : espace local indisponible.'; }
+  }
+  function esc(value) { return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function field(label, value, attr, placeholder = '') {
+    return `<label class="block text-sm font-medium">${label}<input ${attr} value="${esc(value)}" placeholder="${esc(placeholder)}" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal"></label>`;
+  }
+  function render() {
+    const query = $('#search').value.trim().toLocaleLowerCase('fr');
+    const visible = records.filter(r => [r.name, r.profession, ...r.terms.flatMap(t => [t.name,t.definition]), ...r.references].join(' ').toLocaleLowerCase('fr').includes(query));
+    const host = $('#records');
+    if (!visible.length) { host.innerHTML = `<p class="rounded-xl border border-slate-200 bg-white p-6 text-center text-slate-500">${records.length ? 'Aucun résultat.' : 'Aucune fiche pour le moment. Ajoutez un auteur ci-dessus.'}</p>`; return; }
+    host.innerHTML = visible.map(r => `<article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" data-id="${esc(r.id)}">
+      <form class="edit-author grid gap-3 md:grid-cols-2">
+        ${field('Auteur *',r.name,'name required maxlength="160"')}${field('Profession',r.profession,'profession maxlength="240"')}
+        <div class="flex flex-wrap gap-2 md:col-span-2"><button class="rounded-lg bg-teal-700 px-3 py-2 text-sm font-semibold text-white">Enregistrer la fiche</button><button type="button" data-action="delete-author" class="rounded-lg border border-red-300 px-3 py-2 text-sm font-semibold text-red-700">Supprimer la fiche</button></div>
+      </form>
+      <div class="mt-5 grid gap-5 border-t border-slate-100 pt-4 md:grid-cols-2">
+        <section><h3 class="mb-3 font-bold">Termes et définitions (${r.terms.length})</h3><div class="space-y-3">${r.terms.map((t,i)=>`<form class="edit-term rounded-lg bg-slate-50 p-3" data-index="${i}">${field('Terme *',t.name,'name required maxlength="200"')}<label class="mt-2 block text-sm font-medium">Définition<textarea name="definition" rows="3" maxlength="3000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal">${esc(t.definition)}</textarea></label><div class="mt-2 flex gap-2"><button class="rounded-md bg-slate-700 px-3 py-1.5 text-xs font-semibold text-white">Enregistrer</button><button type="button" data-action="delete-term" data-index="${i}" class="rounded-md border border-red-300 px-3 py-1.5 text-xs font-semibold text-red-700">Supprimer</button></div></form>`).join('') || '<p class="text-sm text-slate-500">Aucun terme.</p>'}</div>
+          <form class="add-term mt-3 rounded-lg border border-dashed border-slate-300 p-3">${field('Nouveau terme *','','name required maxlength="200"','Nom du terme')}<label class="mt-2 block text-sm font-medium">Définition<textarea name="definition" rows="3" maxlength="3000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal" placeholder="Définition"></textarea></label><button class="mt-2 rounded-md bg-teal-700 px-3 py-1.5 text-xs font-semibold text-white">Ajouter le terme</button></form>
+        </section>
+        <section><h3 class="mb-3 font-bold">Références bibliographiques (${r.references.length})</h3><div class="space-y-2">${r.references.map((ref,i)=>`<form class="edit-reference flex items-start gap-2" data-index="${i}"><textarea name="reference" required maxlength="2000" rows="3" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">${esc(ref)}</textarea><div class="flex shrink-0 flex-col gap-2"><button class="rounded-md bg-slate-700 px-3 py-1.5 text-xs font-semibold text-white">Enregistrer</button><button type="button" data-action="delete-reference" data-index="${i}" class="rounded-md border border-red-300 px-3 py-1.5 text-xs font-semibold text-red-700">Supprimer</button></div></form>`).join('') || '<p class="text-sm text-slate-500">Aucune référence.</p>'}</div>
+          <form class="add-reference mt-3 flex items-start gap-2"><textarea name="reference" required maxlength="2000" rows="3" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Nouvelle référence bibliographique"></textarea><button class="shrink-0 rounded-md bg-teal-700 px-3 py-2 text-xs font-semibold text-white">Ajouter</button></form>
+        </section>
+      </div></article>`).join('');
+  }
+  $('#author-form').addEventListener('submit', event => { event.preventDefault(); const data = new FormData(event.currentTarget); records.push({id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`, name: data.get('name').trim(), profession: data.get('profession').trim(), terms: [], references: []}); event.currentTarget.reset(); save(); });
+  $('#search').addEventListener('input', render);
+  $('#records').addEventListener('submit', event => {
+    event.preventDefault(); const form = event.target; const card = form.closest('[data-id]'); const record = records.find(r => r.id === card.dataset.id); if (!record) return;
+    const data = new FormData(form);
+    if (form.matches('.edit-author')) { record.name = data.get('name').trim(); record.profession = data.get('profession').trim(); }
+    else if (form.matches('.add-term')) { record.terms.push({name:data.get('name').trim(), definition:data.get('definition').trim()}); }
+    else if (form.matches('.edit-term')) { const term = record.terms[Number(form.dataset.index)]; term.name = data.get('name').trim(); term.definition = data.get('definition').trim(); }
+    else if (form.matches('.add-reference')) { record.references.push(data.get('reference').trim()); }
+    else if (form.matches('.edit-reference')) { record.references[Number(form.dataset.index)] = data.get('reference').trim(); }
+    save();
+  });
+  $('#records').addEventListener('click', event => {
+    const button = event.target.closest('button[data-action]'); if (!button) return;
+    const card = button.closest('[data-id]'); const record = records.find(r => r.id === card.dataset.id); if (!record) return;
+    if (button.dataset.action === 'delete-author') { if (confirm(`Supprimer la fiche « ${record.name} » et tout son contenu ?`)) records = records.filter(r => r.id !== record.id); }
+    if (button.dataset.action === 'delete-term') { if (confirm('Supprimer ce terme ?')) record.terms.splice(Number(button.dataset.index),1); }
+    if (button.dataset.action === 'delete-reference') { if (confirm('Supprimer cette référence ?')) record.references.splice(Number(button.dataset.index),1); }
+    save();
+  });
+  $('#export').addEventListener('click', () => { const blob = new Blob([JSON.stringify(records,null,2)],{type:'application/json'}); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `referentiel-auteurs-${new Date().toISOString().slice(0,10)}.json`; link.click(); URL.revokeObjectURL(link.href); status.textContent = 'Sauvegarde JSON téléchargée.'; });
+  $('#import').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; try { const data = JSON.parse(await file.text()); if (!Array.isArray(data) || data.some(x => !x || typeof x.name !== 'string')) throw new Error(); if (!confirm(`Remplacer les données locales par ${data.length} fiche(s) importée(s) ?`)) return; records = data.map(x => ({id: typeof x.id === 'string' ? x.id : `${Date.now()}-${Math.random()}`, name:x.name, profession:String(x.profession||''), terms:Array.isArray(x.terms)?x.terms:[], references:Array.isArray(x.references)?x.references:[]})); save('Import terminé et enregistré sur cet appareil.'); } catch { status.textContent = 'Fichier invalide : choisissez une sauvegarde JSON du gestionnaire.'; } finally { event.target.value = ''; } });
+  $('#clear').addEventListener('click', () => { if (confirm('Effacer définitivement toutes les données du gestionnaire sur cet appareil ?')) { records = []; save('Données locales effacées.'); } });
+  render();
+})();
+</script>
+</body>
+</html>
